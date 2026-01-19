@@ -1,12 +1,10 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { useMotionValue, motion, useMotionTemplate } from "framer-motion"; // Unified import
+import { useMotionValue, motion, useMotionTemplate } from "framer-motion"; 
 import Button from "../components/ui/Button";
 import WaveButton from "@/components/ui/WaveButton";
 
-/**
- * 1. HeroHighlight Component
- */
+
 export const HeroHighlight = ({
   children,
   className,
@@ -76,9 +74,7 @@ export const HeroHighlight = ({
   );
 };
 
-/**
- * 2. Highlight Component
- */
+
 export const Highlight = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
     <motion.span
@@ -100,9 +96,7 @@ export const Highlight = ({ children, className }: { children: React.ReactNode; 
   );
 };
 
-/**
- * 3. Final Hero Component
- */
+
 const Hero = () => {
   const words = "Hi, I'm Vladimir — a Creative IT Graduate".split(" ");
   const highlightWords = ["Creative", "IT", "Graduate"];
@@ -148,12 +142,13 @@ const Hero = () => {
   transition={{ duration: 0.5, delay: 0.8 }}
   className="relative z-20 mt-10 flex flex-col sm:flex-row items-center justify-center gap-6"
 >
-<WaveButton onClick={() => window.location.href = "#contact"}>
-  Contact Me
-</WaveButton>
-  <Button>
-    <span className="px-4">View My Resume</span>
-  </Button>
+<button onClick={() => window.location.href = "#contact"}>
+  <WaveButton>
+    Contact Me
+  </WaveButton>
+</button>
+
+  <Button>View My Resume</Button>
 </motion.div>
 
       </div>
