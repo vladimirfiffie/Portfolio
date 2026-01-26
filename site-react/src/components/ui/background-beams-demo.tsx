@@ -18,7 +18,7 @@ export function BackgroundBeamsDemo() {
         {/* Contact Links */}
         <div className="flex justify-center gap-4 mt-6 relative z-10 flex-wrap">
           <motion.a
-            href="mailto:your.email@example.com"
+            href="mailto:vladimirfiffiejr@proton.me"
             className="relative px-6 py-2 rounded-lg border border-neutral-700 text-neutral-300 overflow-hidden"
             whileHover="hover"
             initial="initial"

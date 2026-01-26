@@ -6,6 +6,7 @@ import { Spotlight } from './components/ui/spotlight-new';
 import { BackgroundBeamsDemo } from './components/ui/background-beams-demo';
 import Projects from './components/Projects';
 import About from './components/About';
+import { TimelineDemo } from './components/Timeline';
 
 
 export default function App() {
@@ -19,8 +20,9 @@ export default function App() {
           <Spotlight />
           <Hero />
         </div>
-        <Projects />
         <About />
+        <TimelineDemo />
+        <Projects />
 
         {/* Contact Section */}
         <section id="contact" className="py-20 px-4 md:px-8 relative overflow-hidden">

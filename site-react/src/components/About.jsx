@@ -1,7 +1,5 @@
 import Skills from './Skills'
 
-import { HoverEffect as CardHoverEffect } from '@/components/ui/card-hover-effect'
-
 export default function About() {
   return (
     <section id="about" className="w-screen relative overflow-hidden py-20 md:py-32 bg-gray-50 dark:bg-neutral-950">
