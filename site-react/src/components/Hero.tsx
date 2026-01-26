@@ -72,25 +72,31 @@ const Hero = () => {
 
         {/* Scroll Down Animation */}
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3"
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
         >
           <motion.span
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="text-xs md:text-sm text-slate-900 dark:text-slate-50"
+            animate={{ 
+              opacity: [0.4, 1, 0.4],
+              scale: [0.95, 1, 0.95]
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="text-sm md:text-base lg:text-lg font-semibold text-slate-900 dark:text-slate-50 tracking-wider"
           >
             Scroll to explore
           </motion.span>
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ 
+              y: [0, 16, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
             <svg
-              className="w-6 h-6 md:w-7 md:h-7 text-slate-900 dark:text-slate-50"
+              className="w-8 h-8 md:w-10 md:h-10 text-slate-900 dark:text-slate-50"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={2}
             >
               <path
                 strokeLinecap="round"
