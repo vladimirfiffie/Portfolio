@@ -1,158 +1,107 @@
 import React from "react";
-import { cn } from "@/lib/utils";
-import { useMotionValue, motion, useMotionTemplate } from "framer-motion"; 
-import Button from "../components/ui/Button";
-import WaveButton from "@/components/ui/WaveButton";
-
-
-export const HeroHighlight = ({
-  children,
-  className,
-  containerClassName,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  containerClassName?: string;
-}) => {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
-
-  const dotPatterns = {
-    light: {
-      default: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3E%3Ccircle fill='%23d4d4d4' id='pattern-circle' cx='10' cy='10' r='2.5'%3E%3C/circle%3E%3C/svg%3E")`,
-      hover: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3E%3Ccircle fill='%236366f1' id='pattern-circle' cx='10' cy='10' r='2.5'%3E%3C/circle%3E%3C/svg%3E")`,
-    },
-    dark: {
-      default: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3E%3Ccircle fill='%23404040' id='pattern-circle' cx='10' cy='10' r='2.5'%3E%3C/circle%3E%3C/svg%3E")`,
-      hover: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16' fill='none'%3E%3Ccircle fill='%238183f4' id='pattern-circle' cx='10' cy='10' r='2.5'%3E%3C/circle%3E%3C/svg%3E")`,
-    },
-  };
-
-  function handleMouseMove({
-    currentTarget,
-    clientX,
-    clientY,
-  }: React.MouseEvent<HTMLDivElement>) {
-    if (!currentTarget) return;
-    let { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  return (
-    <div
-      className={cn(
-        "group relative flex min-h-[40rem] w-full items-center justify-center bg-white dark:bg-black overflow-hidden",
-        containerClassName
-      )}
-      onMouseMove={handleMouseMove}
-    >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 dark:hidden" style={{ backgroundImage: dotPatterns.light.default }} />
-        <div className="absolute inset-0 hidden dark:block" style={{ backgroundImage: dotPatterns.dark.default }} />
-        
-        <motion.div
-          className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 dark:hidden"
-          style={{
-            backgroundImage: dotPatterns.light.hover,
-            WebkitMaskImage: useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, black 0%, transparent 100%)`,
-            maskImage: useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, black 0%, transparent 100%)`,
-          }}
-        />
-        <motion.div
-          className="absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 dark:block"
-          style={{
-            backgroundImage: dotPatterns.dark.hover,
-            WebkitMaskImage: useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, black 0%, transparent 100%)`,
-            maskImage: useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, black 0%, transparent 100%)`,
-          }}
-        />
-      </div>
-
-      <div className={cn("relative z-20", className)}>{children}</div>
-    </div>
-  );
-};
-
-
-export const Highlight = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  return (
-    <motion.span
-      initial={{ backgroundSize: "0% 100%" }}
-      animate={{ backgroundSize: "100% 100%" }}
-      transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
-      style={{
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "left center",
-        display: "inline",
-      }}
-      className={cn(
-        `relative inline-block rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 px-1 pb-1 dark:from-indigo-500 dark:to-purple-500`,
-        className
-      )}
-    >
-      {children}
-    </motion.span>
-  );
-};
-
+import { Spotlight } from "@/components/ui/spotlight-new";
+import { motion } from "framer-motion";
 
 const Hero = () => {
-  const words = "Hi, I'm Vladimir — a Creative IT Graduate".split(" ");
-  const highlightWords = ["Creative", "IT", "Graduate"];
+  const scrollVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: [0.5, 1, 0.5], transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" } },
+  };
 
   return (
-    <HeroHighlight containerClassName="mx-auto w-full">
-      <div className="max-w-5xl mx-auto py-10 md:py-20 flex flex-col items-center">
-        <motion.h1 
+    <section className="w-screen relative overflow-hidden">
+      <div className="relative w-full min-h-screen flex flex-col items-center justify-center pt-32 pb-20 md:pt-40 md:pb-32">
+        <Spotlight
+          className="-top-40 left-0 md:left-60 md:-top-20"
+          fill="white"
+        />
+        
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative z-20 mx-auto max-w-4xl text-center text-3xl font-bold text-slate-700 md:text-5xl lg:text-7xl dark:text-slate-100 leading-tight"
+          className="relative z-10 mx-auto max-w-6xl text-center text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-slate-900 dark:text-slate-50 leading-tight"
         >
-          {words.map((word, index) => {
-            const cleanWord = word.replace(/[—,.]/g, "");
-            const isHighlight = highlightWords.includes(cleanWord);
-
-            return isHighlight ? (
-              <Highlight key={index} className="mx-1 inline-block text-white">
-                {word}
-              </Highlight>
-            ) : (
-              <span key={index} className="mx-1 inline-block">
-                {word}
-              </span>
-            );
-          })}
+          Hi, I'm Vladimir — a Creative IT Graduate
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="relative z-20 mt-6 max-w-2xl text-center text-lg md:text-xl font-normal text-neutral-600 dark:text-neutral-400"
+          className="relative z-10 mt-6 max-w-3xl text-center text-lg md:text-xl lg:text-2xl font-normal text-neutral-600 dark:text-neutral-300"
         >
           I create engaging digital experiences, combining coding and thoughtful
           design to build applications that are both functional and beautiful.
         </motion.p>
 
-       <motion.div
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 0.8 }}
-  className="relative z-20 mt-10 flex flex-col sm:flex-row items-center justify-center gap-6"
->
-<button onClick={() => window.location.href = "#contact"}>
-  <WaveButton>
-    Contact Me
-  </WaveButton>
-</button>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="relative z-10 mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+          <motion.a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative px-8 py-3 rounded-lg border border-neutral-700 text-neutral-300 text-lg overflow-hidden"
+            whileHover="hover"
+            initial="initial"
+          >
+            <motion.div
+              className="absolute inset-0 bg-neutral-300 rounded-lg"
+              initial={{ x: "-100%" }}
+              variants={{
+                hover: { x: 0 }
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+            <motion.span
+              initial={{ color: "rgb(212, 212, 212)" }}
+              variants={{
+                hover: { color: "rgb(13, 13, 13)" }
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="relative z-10"
+            >
+              View My Resume
+            </motion.span>
+          </motion.a>
+        </motion.div>
 
-  <Button>View My Resume</Button>
-</motion.div>
-
+        {/* Scroll Down Animation */}
+        <motion.div
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3"
+        >
+          <motion.span
+            animate={{ opacity: [0.3, 1, 0.3] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            className="text-xs md:text-sm text-slate-900 dark:text-slate-50"
+          >
+            Scroll to explore
+          </motion.span>
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg
+              className="w-6 h-6 md:w-7 md:h-7 text-slate-900 dark:text-slate-50"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </motion.div>
+        </motion.div>
       </div>
-    </HeroHighlight>
+    </section>
   );
 };
 

@@ -1,50 +1,73 @@
 "use client";
-import { useState, useEffect } from 'react';
-import ThemeSwitcher from './ui/ThemeSwitcher';
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  NavbarLogo,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "@/components/ui/resizable-navbar";
+import { useState } from "react";
 
 export default function Nav() {
-  const [menuActive, setMenuActive] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
+  const navItems = [
+    {
+      name: "Projects",
+      link: "#projects",
+    },
+    {
+      name: "About",
+      link: "#about",
+    },
+    {
+      name: "Contact",
+      link: "#contact",
+    },
+  ];
 
-  const toggleMenu = () => {
-    setMenuActive(!menuActive);
-  };
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setNavHidden(true);
-      } else {
-        setNavHidden(false);
-      }
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className={`nav ${navHidden ? 'nav-hidden' : ''}`}>
-      <div className="nav-container">
-        <div className="nav-logo">
-          <span className="logo-text">VF</span>
-        </div>
-        <ul className={`nav-menu ${menuActive ? 'active' : ''}`}>
-          <li><a href="#home" className="nav-link">Home</a></li>
-          <li><a href="#projects" className="nav-link">Work</a></li>
-          <li><a href="#about" className="nav-link">About</a></li>
-          <li><a href="#contact" className="nav-link">Contact</a></li>
-        </ul>
-        <ThemeSwitcher />
-        <button className={`nav-toggle ${menuActive ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
+    <div className="fixed top-0 left-0 right-0 z-50">
+      <Navbar>
+        {/* Desktop Navigation */}
+        <NavBody>
+          <NavbarLogo />
+          <NavItems items={navItems} />
+        </NavBody>
+
+        {/* Mobile Navigation */}
+        <MobileNav>
+          <MobileNavHeader>
+            <NavbarLogo />
+            <div className="flex items-center gap-4">
+              <MobileNavToggle
+                isOpen={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              />
+            </div>
+          </MobileNavHeader>
+
+          <MobileNavMenu
+            isOpen={isMobileMenuOpen}
+            onClose={() => setIsMobileMenuOpen(false)}
+          >
+            {navItems.map((item, idx) => (
+              <a
+                key={`mobile-link-${idx}`}
+                href={item.link}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative text-neutral-600 dark:text-neutral-300"
+              >
+                <span className="block">{item.name}</span>
+              </a>
+            ))}
+          </MobileNavMenu>
+        </MobileNav>
+      </Navbar>
+    </div>
   );
 }
