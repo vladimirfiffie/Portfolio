@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { motion } from "framer-motion";
 
@@ -8,9 +7,8 @@ const Hero = () => {
     <section className="w-screen relative overflow-hidden bg-neutral-950">
       <div className="relative w-full min-h-screen flex flex-col items-center justify-center pt-32 pb-20 md:pt-40 md:pb-32">
         
-        {/* Container for the Spotlight. 
-          We removed 'fill' and 'className' from the Spotlight itself to satisfy TypeScript.
-        */}
+        {/* Container for the Spotlight.*/}
+
         <div className="absolute -top-40 left-0 md:left-60 md:-top-20 pointer-events-none z-0">
           <Spotlight />
         </div>
@@ -41,7 +39,7 @@ const Hero = () => {
           className="relative z-10 mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <motion.a
-            href="/Vladimir_Fiffie_Jr_Resume.pdf"
+            href="/assets/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="relative px-8 py-3 rounded-lg border border-neutral-700 text-neutral-300 text-lg overflow-hidden group"

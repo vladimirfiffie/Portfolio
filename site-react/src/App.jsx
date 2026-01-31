@@ -7,7 +7,7 @@ import { BackgroundBeamsDemo } from './components/ui/background-beams-demo';
 import Projects from './components/Projects';
 import About from './components/About';
 import { TimelineDemo } from './components/Timeline';
-import Footer from './components/Footer'; // 1. Import it here
+import Footer from './components/Footer'; 
 
 export default function App() {
   return (
@@ -28,7 +28,7 @@ export default function App() {
         </section>
       </main>
 
-      <Footer /> {/* 2. Place it here */}
+      <Footer /> 
     </div>
   );
 }

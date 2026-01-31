@@ -1,16 +1,14 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import {
   IconBrandJavascript,
-  IconBrandReact,
   IconBrandTailwind,
   IconBrandFigma,
   IconBrandNodejs,
   IconBrandGithub,
 } from "@tabler/icons-react";
-import { motion } from "framer-motion"; // Note: ensure you use "framer-motion" or your specific alias
+import { motion } from "framer-motion";
 
 export default function Skills() {
   return (
