@@ -1,10 +1,8 @@
-# ===============================
-# Dependencies
-# ===============================
 node_modules/
-.pnp/
-.pnp.js
-
+**/node_modules/
+dist/
+**/dist/
+.vercel
 # ===============================
 # Build outputs
 # ===============================
@@ -77,3 +75,8 @@ coverage/
 *.swp
 *.swo
 *.bak
+node_modules/
+site-react/node_modules/
+dist/
+site-react/dist/
+.vercel
