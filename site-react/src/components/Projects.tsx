@@ -18,7 +18,7 @@ const cards: CardType[] = [
     aspect: "landscape",
   },
   {
-    title: "View on Website",
+    title: "Visit Website",
     src: "/images/smart-advisor-transparent.png",
     ctaLink: "https://smartadvisor.live/",
     aspect: "landscape",
