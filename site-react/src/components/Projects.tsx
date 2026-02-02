@@ -19,7 +19,7 @@ const cards: CardType[] = [
   },
   {
     title: "View on Website",
-    src: "/images/smart-advisor.png",
+    src: "/images/smart-advisor-transparent.png",
     ctaLink: "https://smartadvisor.live/",
     aspect: "landscape",
   },
