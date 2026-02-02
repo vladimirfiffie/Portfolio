@@ -8,7 +8,7 @@ export function TimelineDemo() {
         <div>
           <p className="mb-8 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
             Built two major projects: <strong>Pao&apos;er Ship</strong>, a Pygame Battleship for Raspberry Pi, 
-            and <strong>Lion&apos;s Den Cinema</strong>, a booking platform with dynamic UI.
+            and <strong>Lion&apos;s Den Cinema</strong>, a booking platform where I designed the web UI.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <ProjectCard title="Pao'er Ship" color="from-blue-500/20 to-cyan-500/20" borderColor="border-blue-500/50" />
@@ -18,18 +18,35 @@ export function TimelineDemo() {
           </div>
         </div>
       ),
-    },
+    }, // ← Added comma here
+
     {
       title: "2025",
       content: (
         <div>
           <p className="mb-8 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
-            Graduated and launched this portfolio. Focusing on an ecommerce platform while mastering React patterns and animations.
+            Graduated and focused on building skills in React, animations, and full-stack development.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <ProjectCard title="Portfolio" color="from-blue-500/20 to-indigo-500/20" borderColor="border-blue-500/50" />
             <ProjectCard title="Framer Motion" color="from-cyan-500/20 to-sky-500/20" borderColor="border-cyan-500/50" />
-            <ProjectCard title="Ecommerce Project" color="from-violet-500/20 to-purple-500/20" borderColor="border-violet-500/50" />
+            <ProjectCard title="Learning Projects" color="from-violet-500/20 to-purple-500/20" borderColor="border-violet-500/50" />
+            <ProjectCard title="Continuous Learning" color="from-pink-500/20 to-rose-500/20" borderColor="border-pink-500/50" />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "2026",
+      content: (
+        <div>
+          <p className="mb-8 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
+            Launched my portfolio and started working on a full-featured ecommerce website. Continuing to explore scalable applications, React patterns, and UX design.
+          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <ProjectCard title="Portfolio" color="from-blue-500/20 to-indigo-500/20" borderColor="border-blue-500/50" />
+            <ProjectCard title="Ecommerce Website (In Progress)" color="from-violet-500/20 to-purple-500/20" borderColor="border-violet-500/50" />
+            <ProjectCard title="Framer Motion" color="from-cyan-500/20 to-sky-500/20" borderColor="border-cyan-500/50" />
             <ProjectCard title="Continuous Learning" color="from-pink-500/20 to-rose-500/20" borderColor="border-pink-500/50" />
           </div>
         </div>
@@ -43,9 +60,15 @@ export function TimelineDemo() {
             Building scalable applications with modern technologies.
           </p>
           <ul className="mb-8 space-y-2">
-            {["Full-featured ecommerce platform", "Advanced React patterns", "Compelling UX animations", "Scalable deployments"].map((item) => (
+            {[
+              "Full-featured ecommerce website",
+              "Landing page for SaaS",
+              "Advanced React patterns",
+              "Compelling UX animations",
+              "Scalable deployments"
+            ].map((item) => (
               <li key={item} className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-                🚀 {item}
+                {item}
               </li>
             ))}
           </ul>
