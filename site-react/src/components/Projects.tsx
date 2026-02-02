@@ -17,13 +17,7 @@ const cards: CardType[] = [
     ctaLink: "https://github.com/ponderrr",
     aspect: "landscape",
   },
-  {
-    title: "View on Github",
-    src: "/images/lion-den-cinema.png",
-    ctaLink: "https://github.com/ponderrr",
-    aspect: "landscape",
-  },
-  
+
 ];
 
 
