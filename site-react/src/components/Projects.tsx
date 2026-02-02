@@ -14,7 +14,13 @@ const cards: CardType[] = [
   {
     title: "View on Github",
     src: "/images/lion-den-cinema.png",
-    ctaLink: "https://github.com/ponderrr",
+    ctaLink: "https://github.com/ponderrr/lions-den-cinema",
+    aspect: "landscape",
+  },
+  {
+    title: "View on Website",
+    src: "/images/smart-advisor.png",
+    ctaLink: "https://smartadvisor.live/",
     aspect: "landscape",
   },
 

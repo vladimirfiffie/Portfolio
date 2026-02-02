@@ -84,7 +84,7 @@ export function BackgroundBeamsDemo() {
 
           {/* LinkedIn */}
           <motion.a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/vladimir-fiffie/"
             target="_blank"
             rel="noopener noreferrer"
             className="relative px-6 py-2 rounded-lg border border-neutral-700 text-neutral-300 overflow-hidden"
