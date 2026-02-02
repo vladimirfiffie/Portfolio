@@ -4,26 +4,30 @@ Welcome to my frontend portfolio! This project showcases my **UI/UX skills, comp
 
 It demonstrates **reusable components, responsive layouts, and interactive design patterns** that I would use in production-grade web applications.
 
+> **Live Website:** [https://vlad-dev.vercel.app/]
+
 ---
 
 ## Features
 
-- **Component-Driven Design** – All sections are built as reusable, modular React components.
-- **Interactive Animations** – Smooth transitions and motion effects powered by Framer Motion.
-- **Tailwind CSS** – Fully responsive, utility-first styling.
-- **Link Previews** – Demonstrates integration of external resources with rich hover states.
-- **Accessibility & UX** – Designed with clear typography, contrast, and intuitive navigation.
-- **Portfolio Footer & Core Stack** – Highlights skills and technologies in a visually appealing, interactive format.
+- **Component-Driven Design** – All sections are built as reusable, modular React components.  
+- **Interactive Animations** – Smooth transitions and motion effects powered by Framer Motion.  
+- **Tailwind CSS** – Fully responsive, utility-first styling.  
+- **Link Previews** – Integration of external resources with rich hover states.  
+- **Accessibility & UX** – Clear typography, high contrast, and intuitive navigation.  
+- **Portfolio Footer & Core Stack** – Highlights skills and technologies in a visually appealing, interactive format.  
+- **Responsive & Mobile-First** – Optimized for devices of all sizes.  
 
 ---
 
 ## Tech Stack
 
-- **React** – Component-based architecture
-- **Next.js** – Server-side rendering and static site generation
-- **TypeScript** – Strongly typed, scalable code
-- **Tailwind CSS** – Responsive styling
-- **Framer Motion** – Animations and motion effects
+- **React** – Component-based architecture  
+- **Next.js** – Server-side rendering and static site generation  
+- **TypeScript** – Strongly typed, scalable code  
+- **Tailwind CSS** – Responsive styling  
+- **Framer Motion** – Animations and motion effects  
+- **Vercel** – Deployment and hosting  
 
 ---
 
@@ -31,10 +35,11 @@ It demonstrates **reusable components, responsive layouts, and interactive desig
 
 This portfolio includes a variety of interactive components and layouts, including:
 
-- Hero sections with motion effects
-- Interactive cards for projects and links
-- Reusable buttons, input fields, and modals
-- Footers with availability indicators and stack previews
+- Hero sections with motion effects  
+- Interactive cards for projects and external links  
+- Reusable buttons, input fields, and modals  
+- Footers with availability indicators and stack previews  
+- Smooth scrolling and navigation transitions  
 
 > All components are **designed for real-world usage**, demonstrating **modularity, scalability, and clean code principles**.
 
