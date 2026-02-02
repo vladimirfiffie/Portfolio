@@ -18,7 +18,7 @@ export function TimelineDemo() {
           </div>
         </div>
       ),
-    }, // ← Added comma here
+    }, 
 
     {
       title: "2025",
