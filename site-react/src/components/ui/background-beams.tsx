@@ -72,7 +72,7 @@ export const BackgroundBeams = React.memo(
           viewBox="0 0 696 316"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none" // Ensures paths stretch to container size
+          preserveAspectRatio="none" 
         >
           {/* Static subtle paths for depth */}
           <path
