@@ -11,6 +11,7 @@
     "@radix-ui/react-hover-card": "^1.1.15",
     "@tabler/icons-react": "^3.36.0",
     "@tailwindcss/postcss": "latest",
+    "@vercel/analytics": "^1.6.1",
     "aceternity-ui": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
