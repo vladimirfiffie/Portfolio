@@ -18,12 +18,6 @@ const cards: CardType[] = [
     aspect: "landscape",
   },
   {
-    title: "Nova SaaS Platform",
-    src: "/images/nova-saas.jpg",
-    ctaLink: "#",
-    aspect: "landscape",
-  },
-  {
     title: "View on Github",
     src: "/images/lion-den-cinema.png",
     ctaLink: "https://github.com/ponderrr",
