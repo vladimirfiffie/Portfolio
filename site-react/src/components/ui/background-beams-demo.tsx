@@ -93,7 +93,7 @@ export function BackgroundBeamsDemo() {
           >
             <motion.div
               className="absolute inset-0 bg-neutral-300"
-              initial={{ x: "-100%" }}
+              initial={{ x: "-110%" }}
               variants={{ hover: { x: 0 } }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             />
