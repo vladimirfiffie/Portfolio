@@ -1,20 +1,20 @@
 "use client";
 
-import Nav from './components/Nav';
-import Hero from './components/Hero';
-import { Spotlight } from './components/ui/spotlight-new';
-import { BackgroundBeamsDemo } from './components/ui/background-beams-demo';
-import Projects from './components/Projects';
-import About from './components/About';
-import { TimelineDemo } from './components/Timeline';
-import Footer from './components/Footer';
-import { Analytics } from "@vercel/analytics/react"; 
+import Nav from "./components/Nav";
+import Hero from "./components/Hero";
+import { Spotlight } from "./components/ui/spotlight-new";
+import { BackgroundBeamsDemo } from "./components/ui/background-beams-demo";
+import Projects from "./components/Projects";
+import About from "./components/About";
+import { TimelineDemo } from "./components/Timeline";
+import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans antialiased">
       <Nav />
-      
+
       <main>
         <div className="relative">
           <Spotlight />
@@ -24,7 +24,10 @@ export default function App() {
         <TimelineDemo />
         <Projects />
 
-        <section id="contact" className="py-20 px-4 md:px-8 relative overflow-hidden">
+        <section
+          id="contact"
+          className="py-20 px-4 md:px-8 relative overflow-hidden"
+        >
           <BackgroundBeamsDemo />
         </section>
       </main>

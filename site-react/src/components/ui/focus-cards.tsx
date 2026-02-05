@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 
@@ -18,7 +18,9 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
 
   useEffect(() => {
     if (scrollRef.current) {
-      setScrollWidth(scrollRef.current.scrollWidth - scrollRef.current.offsetWidth);
+      setScrollWidth(
+        scrollRef.current.scrollWidth - scrollRef.current.offsetWidth,
+      );
     }
   }, [scrollRef.current?.scrollWidth]);
 
@@ -51,7 +53,7 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
         ref={scrollRef}
         className={cn(
           "flex items-center gap-6 px-10 cursor-grab overflow-x-auto no-scrollbar whitespace-nowrap",
-          "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]",
         )}
         drag="x"
         dragConstraints={{ left: -scrollWidth, right: 0 }}
@@ -70,18 +72,20 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
               card.aspect === "portrait"
                 ? "w-[280px] md:w-[350px]"
                 : card.aspect === "landscape"
-                ? "w-[400px] md:w-[600px]"
-                : "w-[300px] md:w-[450px]",
-              hovered !== null && hovered !== index && "blur-md scale-[0.95] opacity-40",
-              hovered === index && "scale-105 z-10 shadow-2xl"
+                  ? "w-[400px] md:w-[600px]"
+                  : "w-[300px] md:w-[450px]",
+              hovered !== null &&
+                hovered !== index &&
+                "blur-md scale-[0.95] opacity-40",
+              hovered === index && "scale-105 z-10 shadow-2xl",
             )}
             style={{
               aspectRatio:
                 card.aspect === "portrait"
                   ? "3/4"
                   : card.aspect === "landscape"
-                  ? "16/9"
-                  : "1/1",
+                    ? "16/9"
+                    : "1/1",
             }}
           >
             <img
@@ -93,7 +97,7 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
             <div
               className={cn(
                 "absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 md:p-10 transition-opacity duration-500",
-                hovered === index ? "opacity-100" : "opacity-0"
+                hovered === index ? "opacity-100" : "opacity-0",
               )}
             >
               <div className="text-xl md:text-3xl font-bold text-white whitespace-normal leading-tight">

@@ -25,14 +25,14 @@ export function BackgroundBeamsDemo() {
         </h1>
 
         <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
-          I'm always interested in hearing about new projects and creative opportunities.
-          Whether you have an exciting idea to explore or need help bringing your vision to life,
-          feel free to reach out. Let's collaborate and create something amazing together.
+          I'm always interested in hearing about new projects and creative
+          opportunities. Whether you have an exciting idea to explore or need
+          help bringing your vision to life, feel free to reach out. Let's
+          collaborate and create something amazing together.
         </p>
 
         {/* Contact Links */}
         <div className="flex justify-center gap-4 mt-6 relative z-10 flex-wrap">
-          
           {/* Email — Copy to Clipboard */}
           <motion.button
             onClick={handleCopy}
@@ -106,7 +106,6 @@ export function BackgroundBeamsDemo() {
               LinkedIn
             </motion.span>
           </motion.a>
-
         </div>
       </div>
 

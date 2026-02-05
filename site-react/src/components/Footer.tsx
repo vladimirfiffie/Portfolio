@@ -23,7 +23,6 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10">
-          
           {/* Left: Identity */}
           <div className="flex flex-col space-y-2 items-center md:items-start">
             <motion.div

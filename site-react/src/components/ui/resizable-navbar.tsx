@@ -10,7 +10,6 @@ import {
 
 import React, { useRef, useState } from "react";
 
-
 interface NavbarProps {
   children: React.ReactNode;
   className?: string;
@@ -111,7 +110,6 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
     </motion.div>
   );
 };
-
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);

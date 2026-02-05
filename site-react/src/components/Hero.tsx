@@ -6,13 +6,12 @@ const Hero = () => {
   return (
     <section className="w-screen relative overflow-hidden bg-neutral-950">
       <div className="relative w-full min-h-screen flex flex-col items-center justify-center pt-32 pb-20 md:pt-40 md:pb-32">
-        
         {/* Container for the Spotlight.*/}
 
         <div className="absolute -top-40 left-0 md:left-60 md:-top-20 pointer-events-none z-0">
           <Spotlight />
         </div>
-        
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,26 +49,22 @@ const Hero = () => {
               className="absolute inset-0 bg-neutral-100"
               initial={{ x: "-100%" }}
               variants={{
-                hover: { x: 0 }
+                hover: { x: 0 },
               }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             />
-            <motion.span
-              className="relative z-10 text-neutral-300 transition-colors duration-300 group-hover:text-neutral-900"
-            >
+            <motion.span className="relative z-10 text-neutral-300 transition-colors duration-300 group-hover:text-neutral-900">
               View My Resume
             </motion.span>
           </motion.a>
         </motion.div>
 
         {/* Scroll Down Animation */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
+        <motion.div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
           <motion.span
-            animate={{ 
+            animate={{
               opacity: [0.4, 1, 0.4],
-              y: [0, 5, 0]
+              y: [0, 5, 0],
             }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="text-xs md:text-sm font-semibold text-slate-900 dark:text-slate-50 tracking-widest uppercase"
@@ -77,7 +72,7 @@ const Hero = () => {
             Scroll to explore
           </motion.span>
           <motion.div
-            animate={{ 
+            animate={{
               y: [0, 10, 0],
             }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -89,7 +84,11 @@ const Hero = () => {
               viewBox="0 0 24 24"
               strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
             </svg>
           </motion.div>
         </motion.div>

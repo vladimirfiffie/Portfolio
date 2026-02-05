@@ -62,7 +62,7 @@ export const BackgroundBeams = React.memo(
       <div
         className={cn(
           "absolute inset-0 flex h-full w-full items-center justify-center",
-          className
+          className,
         )}
       >
         <svg
@@ -72,7 +72,7 @@ export const BackgroundBeams = React.memo(
           viewBox="0 0 696 316"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none" 
+          preserveAspectRatio="none"
         >
           {/* Static subtle paths for depth */}
           <path
@@ -135,7 +135,7 @@ export const BackgroundBeams = React.memo(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 BackgroundBeams.displayName = "BackgroundBeams";

@@ -71,7 +71,7 @@ const SkeletonTwo = () => {
         <motion.div
           key={i}
           variants={{
-            hover: { scale: [1, 1.2, 1], rotate: [0, i * 5, 0] }
+            hover: { scale: [1, 1.2, 1], rotate: [0, i * 5, 0] },
           }}
           className="h-12 w-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 shadow-sm"
         />
@@ -88,7 +88,7 @@ const SkeletonThree = () => {
         <div className="h-2 w-8 bg-green-500 rounded-full animate-pulse" />
         <div className="h-2 w-2 bg-neutral-400 rounded-full" />
       </div>
-      <motion.div 
+      <motion.div
         animate={{ y: [0, -40], opacity: [0, 1, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-t from-green-500 to-transparent"
@@ -101,25 +101,25 @@ const SkeletonThree = () => {
 // 4. Tools: Simulating Git Commits / Version History
 const SkeletonFour = () => {
   return (
-    <motion.div 
+    <motion.div
       className="flex flex-1 w-full h-full min-h-[6rem] bg-neutral-100 dark:bg-neutral-900 rounded-lg p-4 flex-col space-y-3"
       initial="initial"
       whileHover="hover"
     >
       {[1, 2, 3].map((i) => (
         <div key={i} className="flex items-center gap-3">
-          <motion.div 
+          <motion.div
             variants={{
               initial: { scale: 1, rotate: 0 },
-              hover: { scale: 1.5, rotate: 180 }
+              hover: { scale: 1.5, rotate: 180 },
             }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="h-3 w-3 rounded-full border-2 border-orange-500 bg-white dark:bg-black" 
+            className="h-3 w-3 rounded-full border-2 border-orange-500 bg-white dark:bg-black"
           />
-          <motion.div 
+          <motion.div
             variants={{
               initial: { width: "20%" },
-              hover: { width: "100%" }
+              hover: { width: "100%" },
             }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
             className="h-2 bg-neutral-200 dark:bg-neutral-800 rounded-full"
@@ -159,14 +159,18 @@ const skillItems = [
   },
   {
     title: "UI / Styling",
-    description: <span className="text-sm">Tailwind CSS, Styled-Components, Figma</span>,
+    description: (
+      <span className="text-sm">Tailwind CSS, Styled-Components, Figma</span>
+    ),
     header: <SkeletonTwo />,
     className: "md:col-span-1",
     icon: <IconBrandTailwind className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "Backend & DevOps",
-    description: <span className="text-sm">Node.js, Express, Docker, CI/CD</span>,
+    description: (
+      <span className="text-sm">Node.js, Express, Docker, CI/CD</span>
+    ),
     header: <SkeletonThree />,
     className: "md:col-span-1",
     icon: <IconBrandNodejs className="h-4 w-4 text-neutral-500" />,
@@ -180,7 +184,11 @@ const skillItems = [
   },
   {
     title: "Extras",
-    description: <span className="text-sm">Testing, Accessibility, Performance Tuning</span>,
+    description: (
+      <span className="text-sm">
+        Testing, Accessibility, Performance Tuning
+      </span>
+    ),
     header: <SkeletonFive />,
     className: "md:col-span-1",
     icon: <IconBrandFigma className="h-4 w-4 text-neutral-500" />,

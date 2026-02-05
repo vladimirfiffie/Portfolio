@@ -1,9 +1,5 @@
 "use client";
-import {
-  useScroll,
-  useTransform,
-  motion,
-} from "framer-motion";
+import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
@@ -38,16 +34,13 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10 text-center flex flex-col items-center">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-lg md:text-5xl lg:text-6xl mb-4 text-black dark:text-white font-bold"
-        >
+        <h2 className="text-lg md:text-5xl lg:text-6xl mb-4 text-black dark:text-white font-bold">
           My Journey
-        </motion.h2>
+        </h2>
+
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-2xl">
-          From building my first projects to creating engaging digital experiences. 
-          Here&apos;s a timeline of my growth as a developer.
+          From building my first projects to creating engaging digital
+          experiences. Here&apos;s a timeline of my growth as a developer.
         </p>
       </div>
 

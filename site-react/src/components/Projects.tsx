@@ -27,10 +27,9 @@ export default function Projects() {
   const inProgressCards: CardType[] = [
     {
       title: "Ecommerce Website",
-      src: "/images/placeholder.png", 
+      src: "/images/placeholder.png",
       aspect: "landscape",
     },
-   
   ];
 
   return (
