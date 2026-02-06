@@ -76,9 +76,9 @@ export function TimelineDemo() {
       content: (
         <div>
           <p className="mb-8 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
-            Launched my portfolio and started working on a full-featured
-            ecommerce website. Continuing to explore scalable applications,
-            React patterns, and UX design.
+            "Portfolio launched. Currently building Airflow, a flight SaaS, with
+            a focus on scalable React applications and high-performance UX
+            design."
           </p>
           <div className="grid grid-cols-2 gap-4">
             <ProjectCard
@@ -87,7 +87,7 @@ export function TimelineDemo() {
               borderColor="border-blue-500/50"
             />
             <ProjectCard
-              title="Ecommerce Website (In Progress)"
+              title="Airflow (In Progress)"
               color="from-violet-500/20 to-purple-500/20"
               borderColor="border-violet-500/50"
             />
@@ -114,8 +114,6 @@ export function TimelineDemo() {
           </p>
           <ul className="mb-8 space-y-2">
             {[
-              "Full-featured ecommerce website",
-              "Landing page for SaaS",
               "Advanced React patterns",
               "Compelling UX animations",
               "Scalable deployments",
