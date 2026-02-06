@@ -26,7 +26,7 @@ export default function Projects() {
 
   const inProgressCards: CardType[] = [
     {
-      title: "Ecommerce Website",
+      title: "SaaS Landing Page",
       src: "/images/placeholder.png",
       aspect: "landscape",
     },
