@@ -27,7 +27,7 @@ export default function Projects() {
   const inProgressCards: CardType[] = [
     {
       title: "View on Github",
-      src: "/images/placeholder.png",
+      src: "/images/Airflow-Logo.png",
       ctaLink: "https://github.com/vladimirfiffie/Airflow",
       aspect: "landscape",
     },
