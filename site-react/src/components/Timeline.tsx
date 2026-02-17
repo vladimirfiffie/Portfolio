@@ -104,26 +104,33 @@ export function TimelineDemo() {
 function ProjectCard({ title }: { title: string }) {
   return (
     <motion.div
+      initial="rest"
       whileHover="hover"
-      initial="initial"
-      className="h-20 md:h-44 lg:h-60 border-r border-b border-border bg-background flex items-center justify-center relative overflow-hidden group cursor-default"
+      animate="rest"
+      variants={{
+        rest: {
+          backgroundColor: "var(--background)",
+        },
+        hover: {
+          backgroundColor: "var(--primary)",
+        },
+      }}
+      transition={{ duration: 0.18 }}
+      className="h-20 md:h-44 lg:h-60 border-r border-b border-border flex items-center justify-center relative overflow-hidden"
     >
-      {/* High-contrast fill animation on hover */}
-      <motion.div
-        className="absolute inset-0 bg-primary"
-        variants={{
-          initial: { y: "100%" },
-          hover: { y: 0 },
-        }}
-        transition={{ duration: 0.2, ease: "linear" }}
-      />
-
       <motion.span
         variants={{
-          initial: { color: "var(--foreground)" },
-          hover: { color: "var(--primary-foreground)" },
+          rest: {
+            color: "var(--foreground)",
+            scale: 1,
+          },
+          hover: {
+            color: "var(--primary-foreground)",
+            scale: 1.05,
+          },
         }}
-        className="relative z-10 text-xs md:text-sm font-black uppercase tracking-tighter text-center px-4"
+        transition={{ duration: 0.18 }}
+        className="text-xs md:text-sm font-black uppercase tracking-tighter text-center px-4"
       >
         {title}
       </motion.span>

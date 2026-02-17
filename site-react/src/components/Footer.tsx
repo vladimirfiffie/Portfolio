@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <footer className="relative w-full bg-background pt-24 pb-12 overflow-hidden border-t border-border">
-      {/* Sharp Accent Lines */}
+      {/* Top Border Line */}
       <div className="absolute top-0 left-0 w-full h-px bg-border" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -25,8 +25,7 @@ const Footer = () => {
           <div className="flex flex-col space-y-2 items-center md:items-start">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-4xl font-black text-foreground tracking-tighter text-center md:text-left uppercase leading-none">
@@ -45,7 +44,7 @@ const Footer = () => {
                 <LinkPreview
                   key={tech.name}
                   url={tech.url}
-                  className="text-foreground text-[10px] font-black uppercase tracking-[0.2em] hover:text-primary transition-colors border-b border-transparent hover:border-primary"
+                  className="inline-block text-foreground text-[10px] font-black uppercase tracking-[0.2em] transition-colors border-b border-primary/0 hover:border-primary hover:text-primary"
                 >
                   {tech.name}
                 </LinkPreview>
@@ -53,11 +52,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right: Availability  */}
+          {/* Right: Availability */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-col items-center md:items-end space-y-4"
           >

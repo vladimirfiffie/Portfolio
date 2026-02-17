@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export type CardType = {
   title: string;
@@ -13,50 +12,42 @@ export type CardType = {
 
 export function FocusCards({ cards }: { cards: CardType[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollWidth, setScrollWidth] = useState(0);
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      setScrollWidth(
-        scrollRef.current.scrollWidth - scrollRef.current.offsetWidth,
-      );
-    }
-  }, [scrollRef.current?.scrollWidth]);
-
-  useEffect(() => {
-    if (!scrollRef.current || hovered !== null || cards.length < 4) return;
-
-    const container = scrollRef.current;
-    let requestId: number;
-    const speed = 0.5;
-
-    const scroll = () => {
-      if (container.scrollLeft >= container.scrollWidth / 2) {
-        container.scrollLeft = 0;
-      } else {
-        container.scrollLeft += speed;
-      }
-      requestId = requestAnimationFrame(scroll);
-    };
-
-    requestId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(requestId);
-  }, [hovered, cards.length]);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const offsetRef = useRef(0);
 
   const infiniteCards = cards.length >= 4 ? [...cards, ...cards] : cards;
 
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track || hovered !== null || cards.length < 4) return;
+
+    const speed = 1.35;
+    const animate = () => {
+      const singleWidth = track.scrollWidth / 2;
+
+      offsetRef.current -= speed;
+
+      if (offsetRef.current <= -singleWidth) {
+        offsetRef.current += singleWidth;
+      }
+
+      track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [hovered, cards.length]);
+
   return (
     <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-10 bg-background">
-      <motion.div
-        ref={scrollRef}
-        className={cn(
-          "flex items-center gap-6 px-10 cursor-grab overflow-x-auto no-scrollbar whitespace-nowrap",
-          "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]",
-        )}
-        drag="x"
-        dragConstraints={{ left: -scrollWidth, right: 0 }}
-        whileTap={{ cursor: "grabbing" }}
+      <div
+        ref={trackRef}
+        className="flex items-center gap-6 px-10 whitespace-nowrap will-change-transform"
       >
         {infiniteCards.map((card, index) => (
           <a
@@ -94,7 +85,7 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               loading="lazy"
             />
-            {/* Monochrome Overlay */}
+
             <div
               className={cn(
                 "absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent flex items-end p-6 md:p-10 transition-opacity duration-500",
@@ -107,11 +98,13 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
             </div>
           </a>
         ))}
-      </motion.div>
+      </div>
 
-      {/* Edge gradients */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-linear-gradient-to-r from-background to-transparent z-20" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-linear-to-l from-background to-transparent z-20" />
+      {/* Left fade */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-background/80 dark:from-background to-transparent z-20" />
+
+      {/* Right fade */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-background/80 dark:from-background to-transparent z-20" />
     </div>
   );
 }
