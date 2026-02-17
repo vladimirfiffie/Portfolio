@@ -83,9 +83,7 @@ export function TimelineDemo() {
                 key={item}
                 className="flex items-center gap-2 text-xs text-foreground md:text-sm font-black uppercase tracking-widest"
               >
-                <div className="h-2 w-2 bg-primary" />{" "}
-                {/* Square bullet instead of round */}
-                {item}
+                <div className="h-2 w-2 bg-primary" /> {item}
               </li>
             ))}
           </ul>

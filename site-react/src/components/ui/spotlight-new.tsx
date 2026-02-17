@@ -14,8 +14,6 @@ type SpotlightProps = {
 };
 
 export const Spotlight = ({
-  // Replaced hsla(210...) with pure white (0, 0%, 100%) or neutral grays
-  // These now act as pure "light" beams
   gradientFirst = "radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(0, 0%, 100%, .08) 0, hsla(0, 0%, 100%, .02) 50%, hsla(0, 0%, 100%, 0) 80%)",
   gradientSecond = "radial-gradient(50% 50% at 50% 50%, hsla(0, 0%, 100%, .06) 0, hsla(0, 0%, 100%, .02) 80%, transparent 100%)",
   gradientThird = "radial-gradient(50% 50% at 50% 50%, hsla(0, 0%, 100%, .04) 0, hsla(0, 0%, 100%, .02) 80%, transparent 100%)",

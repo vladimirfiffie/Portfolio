@@ -69,10 +69,10 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
             className={cn(
               "flex-none relative rounded-3xl overflow-hidden transition-all duration-500 ease-out border border-border bg-secondary",
               card.aspect === "portrait"
-                ? "w-[280px] md:w-[350px]"
+                ? "w-70 md:w-87.5"
                 : card.aspect === "landscape"
-                  ? "w-[400px] md:w-[600px]"
-                  : "w-[300px] md:w-[450px]",
+                  ? "w-100 md:w-150"
+                  : "w-75 md:w-112.5",
               hovered !== null &&
                 hovered !== index &&
                 "blur-[2px] scale-[0.98] opacity-50 grayscale",
@@ -97,7 +97,7 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
             {/* Monochrome Overlay */}
             <div
               className={cn(
-                "absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent flex items-end p-6 md:p-10 transition-opacity duration-500",
+                "absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent flex items-end p-6 md:p-10 transition-opacity duration-500",
                 hovered === index ? "opacity-100" : "opacity-0",
               )}
             >
@@ -109,9 +109,9 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
         ))}
       </motion.div>
 
-      {/* Edge gradients using your CSS variables */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-background to-transparent z-20" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-background to-transparent z-20" />
+      {/* Edge gradients */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-linear-gradient-to-r from-background to-transparent z-20" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-linear-to-l from-background to-transparent z-20" />
     </div>
   );
 }

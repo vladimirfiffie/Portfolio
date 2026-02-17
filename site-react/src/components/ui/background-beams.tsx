@@ -74,7 +74,7 @@ export const BackgroundBeams = React.memo(
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
         >
-          {/* Static subtle paths for depth - now using currentColor */}
+          {/* Static subtle paths for depth */}
           <path
             d="M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875"
             stroke="url(#paint0_radial_242_278)"

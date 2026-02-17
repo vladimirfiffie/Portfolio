@@ -8,7 +8,7 @@ import {
   IconBrandNodejs,
   IconBrandGithub,
 } from "@tabler/icons-react";
-import { motion } from "motion/react"; // Using motion/react for consistency
+import { motion } from "motion/react";
 
 export default function Skills() {
   return (
@@ -42,7 +42,7 @@ const SkeletonOne = () => {
     <motion.div
       initial="initial"
       whileHover="animate"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.1] bg-dot-black/[0.1] flex-col space-y-2 rounded-lg p-4 font-mono"
+      className="flex flex-1 w-full h-full min-h-24 dark:bg-dot-white/[0.1] bg-dot-black/[0.1] flex-col space-y-2 rounded-lg p-4 font-mono"
     >
       {[40, 70, 50].map((width, i) => (
         <motion.div
@@ -68,7 +68,7 @@ const SkeletonTwo = () => {
   return (
     <motion.div
       whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] bg-secondary/50 rounded-lg p-4 items-center justify-center gap-2"
+      className="flex flex-1 w-full h-full min-h-24 bg-secondary/50 rounded-lg p-4 items-center justify-center gap-2"
     >
       {[1, 2, 3].map((i) => (
         <motion.div
@@ -86,7 +86,7 @@ const SkeletonTwo = () => {
 // 3. Backend: Data Packets (Solid Primary)
 const SkeletonThree = () => {
   return (
-    <div className="flex flex-1 w-full h-full min-h-[6rem] bg-secondary/50 rounded-lg p-4 flex-col justify-between overflow-hidden relative">
+    <div className="flex flex-1 w-full h-full min-h-24 bg-secondary/50 rounded-lg p-4 flex-col justify-between overflow-hidden relative">
       <div className="flex justify-between w-full border-b border-border pb-2">
         <div className="h-2 w-8 bg-primary rounded-full animate-pulse" />
         <div className="h-2 w-2 bg-muted-foreground rounded-full" />
@@ -94,7 +94,7 @@ const SkeletonThree = () => {
       <motion.div
         animate={{ y: [0, -40], opacity: [0, 1, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-t from-primary to-transparent"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1 h-8 bg-linear-to-t from-primary to-transparent"
       />
       <div className="h-8 w-full bg-background border border-border rounded-md" />
     </div>
@@ -105,7 +105,7 @@ const SkeletonThree = () => {
 const SkeletonFour = () => {
   return (
     <motion.div
-      className="flex flex-1 w-full h-full min-h-[6rem] bg-secondary/50 rounded-lg p-4 flex-col space-y-3"
+      className="flex flex-1 w-full h-full min-h-24 bg-secondary/50 rounded-lg p-4 flex-col space-y-3"
       initial="initial"
       whileHover="hover"
     >
@@ -134,7 +134,7 @@ const SkeletonFour = () => {
 // 5. Extras: Performance Bars (Solid Fills)
 const SkeletonFive = () => {
   return (
-    <div className="flex flex-1 w-full h-full min-h-[6rem] bg-secondary/50 rounded-lg p-4 items-end justify-around">
+    <div className="flex flex-1 w-full h-full min-h-24 bg-secondary/50 rounded-lg p-4 items-end justify-around">
       {[60, 100, 80].map((height, i) => (
         <motion.div
           key={i}

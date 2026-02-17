@@ -6,7 +6,6 @@ export default function About() {
   return (
     <section
       id="about"
-      /* Changed border-border/50 to border-border for a solid B&W line */
       className="w-screen relative overflow-hidden py-20 md:py-32 bg-background border-y border-border"
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col items-center">
@@ -15,7 +14,6 @@ export default function About() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            /* Matched font-black, uppercase, and tracking-tighter from Hero */
             className="text-4xl md:text-5xl lg:text-8xl font-black mb-12 text-foreground uppercase tracking-tighter leading-none"
           >
             A Bit About Me<span className="text-primary">.</span>
@@ -26,7 +24,6 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            /* Changed muted-foreground to foreground and added font-bold */
             className="space-y-6 text-lg md:text-xl text-foreground mb-16 leading-tight uppercase font-bold tracking-tight"
           >
             <p>

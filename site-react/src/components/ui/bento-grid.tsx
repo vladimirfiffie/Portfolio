@@ -37,14 +37,12 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        // Removed neutral-200 and shadow-input
-        // Added var-based border, secondary background, and spring transition
         "group/bento row-span-1 flex flex-col justify-between space-y-4 rounded-3xl border border-border bg-secondary/30 p-4 transition-all duration-300 hover:bg-secondary/50 hover:border-primary/50",
         className,
       )}
     >
-      {/* Header container for your Skeleton animations */}
-      <div className="flex flex-1 w-full h-full min-h-[6rem]">{header}</div>
+      {/* Header container for Skeleton animations */}
+      <div className="flex flex-1 w-full h-full min-h-24">{header}</div>
 
       <div className="transition duration-300 group-hover/bento:translate-x-1">
         {/* Icon is now primary-colored by default */}

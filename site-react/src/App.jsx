@@ -12,7 +12,6 @@ import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
-    /* Changed dark:bg-neutral-950 to dark:bg-background to use your CSS variables */
     <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-primary-foreground">
       <Nav />
 
@@ -26,7 +25,6 @@ export default function App() {
         {/* CONTENT SECTIONS */}
         <About />
 
-        {/* We wrap Timeline in a container to manage the B&W borders if needed */}
         <section className="border-t border-border bg-background">
           <TimelineDemo />
         </section>

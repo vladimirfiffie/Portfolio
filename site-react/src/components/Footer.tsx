@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 
@@ -39,7 +38,7 @@ const Footer = () => {
             </motion.div>
           </div>
 
-          {/* Middle: Core Stack (No dots, just sharp spacing) */}
+          {/* Middle: Core Stack */}
           <div className="hidden lg:flex items-center justify-center">
             <div className="flex items-center gap-8 whitespace-nowrap">
               {coreStack.map((tech) => (
@@ -54,7 +53,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right: Availability (Sharp Box) */}
+          {/* Right: Availability  */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

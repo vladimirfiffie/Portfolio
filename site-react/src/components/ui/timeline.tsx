@@ -53,11 +53,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           >
             {/* STICKY YEAR CONTAINER */}
             <div className="sticky top-40 flex flex-col md:flex-row z-40 items-center self-start max-w-xs lg:max-w-sm md:w-full">
-              {/* Changed circle to a square marker */}
               <div className="h-10 absolute left-3 md:left-3 w-10 bg-background flex items-center justify-center border border-border">
                 <div className="h-3 w-3 bg-primary" />
               </div>
-              {/* Year text matched to high-contrast theme */}
               <h3 className="hidden md:block text-xl md:pl-20 md:text-7xl font-black text-foreground uppercase tracking-tighter opacity-20">
                 {item.title}
               </h3>
@@ -76,15 +74,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {/* TRACKING LINE - Stripped of soft gradients */}
         <div
           style={{ height: height + "px" }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-border/20"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-0.5 bg-border/20"
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            /* Changed to a solid primary block that travels down */
-            className="absolute inset-x-0 top-0 w-[2px] bg-primary"
+            className="absolute inset-x-0 top-0 w-0.5 bg-primary"
           />
         </div>
       </div>

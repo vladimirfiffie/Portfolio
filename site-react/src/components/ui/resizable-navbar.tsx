@@ -66,8 +66,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-[fit-content] min-w-[550px] flex-row items-center justify-between rounded-full border bg-transparent px-6 py-2 lg:flex transition-all duration-300",
-        // Backdrop blur is key here
+        "relative z-60 mx-auto hidden w-fit min-w-137.5 flex-row items-center justify-between rounded-full border bg-transparent px-6 py-2 lg:flex transition-all duration-300",
         visible && "backdrop-blur-md shadow-xl border-border",
         className,
       )}

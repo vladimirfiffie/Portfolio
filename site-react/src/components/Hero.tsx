@@ -35,7 +35,6 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="relative z-10 mt-12"
         >
-          {/* Button updated to match BackgroundBeamsDemo style: No Radius, No Grays */}
           <motion.a
             href="/assets/resume.pdf"
             target="_blank"
@@ -70,7 +69,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          <div className="w-[26px] h-[42px] border-2 border-foreground rounded-full flex justify-center p-2">
+          <div className="w-6.5 h-10 border-2 border-foreground rounded-full flex justify-center p-2">
             <motion.div
               animate={{
                 y: [0, 15, 0],

@@ -16,8 +16,6 @@ type LinkPreviewProps = {
   className?: string;
   width?: number;
   height?: number;
-  quality?: number;
-  layout?: string;
 } & (
   | { isStatic: true; imageSrc: string }
   | { isStatic?: false; imageSrc?: never }
@@ -29,8 +27,6 @@ export const LinkPreview = ({
   className,
   width = 200,
   height = 125,
-  quality = 50,
-  layout = "fixed",
   isStatic = false,
   imageSrc = "",
 }: LinkPreviewProps) => {
@@ -97,7 +93,7 @@ export const LinkPreview = ({
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content
-          className="[transform-origin:var(--radix-hover-card-content-transform-origin)] z-50"
+          className="origin-(--radix-hover-card-content-transform-origin) z-50"
           side="top"
           align="center"
           sideOffset={10}
@@ -131,7 +127,6 @@ export const LinkPreview = ({
                     src={isStatic ? imageSrc : src}
                     width={width}
                     height={height}
-                    // REPLACED: Removed 'grayscale' class to keep it full color
                     className="rounded-xl object-cover"
                     alt="preview image"
                   />

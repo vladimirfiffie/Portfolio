@@ -5,19 +5,19 @@ import { FocusCards, CardType } from "@/components/ui/focus-cards";
 export default function Projects() {
   const cards: CardType[] = [
     {
-      title: "Pao'er Ship",
+      title: "View on GitHub",
       src: "/images/paoer-ship.jpg",
       ctaLink: "https://github.com/ponderrr/paoer_ship",
       aspect: "landscape",
     },
     {
-      title: "Lion's Den Cinema",
+      title: "View on GitHub",
       src: "/images/lion-den-cinema.png",
       ctaLink: "https://github.com/ponderrr/lions-den-cinema",
       aspect: "landscape",
     },
     {
-      title: "Smart Advisor",
+      title: "Visit Website",
       src: "/images/smart-advisor-transparent.png",
       ctaLink: "https://smartadvisor.live/",
       aspect: "landscape",
@@ -26,7 +26,7 @@ export default function Projects() {
 
   const inProgressCards: CardType[] = [
     {
-      title: "Airflow (Flight SaaS)",
+      title: "View on GitHub",
       src: "/images/Airflow-Logo.png",
       ctaLink: "https://github.com/vladimirfiffie/Airflow",
       aspect: "landscape",
