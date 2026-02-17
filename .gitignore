@@ -1,82 +1,50 @@
+# Dependencies
 node_modules/
-**/node_modules/
-dist/
-**/dist/
-.vercel
-# ===============================
-# Build outputs
-# ===============================
+.pnpm-store/
+
+# Next.js / Vite / Build Outputs
+.next/
 dist/
 build/
-.out/
+out/
 .vite/
+.vercel
 
-# ===============================
-# Environment variables
-# ===============================
+# Environment Variables (CRITICAL)
 .env
-.env.*
-!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.local
 
-# ===============================
 # Logs
-# ===============================
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-logs/
-*.log
 
-# ===============================
-# OS / Editor files
-# ===============================
+# Editor / OS
 .DS_Store
-Thumbs.db
-
-# VS Code
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
-
-# JetBrains
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# ===============================
+# Testing & Coverage
+coverage/
+.nyc_output/
+
 # TypeScript
-# ===============================
 *.tsbuildinfo
 
-# ===============================
-# Testing
-# ===============================
-coverage/
-
-# ===============================
-# Cache / temp
-# ===============================
-.cache/
-.tmp/
-.temp/
-
-# ===============================
-# Tailwind / PostCSS
-# ===============================
+# Tailwind / PostCSS / Cache
 .postcss-cache/
-
-# ===============================
-# Motion / animation cache
-# ===============================
-.motion-cache/
-
-# ===============================
-# Misc
-# ===============================
-*.swp
-*.swo
-*.bak
-node_modules/
-site-react/node_modules/
-dist/
-site-react/dist/
-.vercel
+.turbo/
+.cache/
