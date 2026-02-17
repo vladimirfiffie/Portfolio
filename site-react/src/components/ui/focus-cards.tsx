@@ -24,7 +24,6 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
     }
   }, [scrollRef.current?.scrollWidth]);
 
-  // Optional infinite auto-scroll (only for 4+ cards)
   useEffect(() => {
     if (!scrollRef.current || hovered !== null || cards.length < 4) return;
 
@@ -48,7 +47,7 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
   const infiniteCards = cards.length >= 4 ? [...cards, ...cards] : cards;
 
   return (
-    <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-10">
+    <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-10 bg-background">
       <motion.div
         ref={scrollRef}
         className={cn(
@@ -68,7 +67,7 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
             onMouseEnter={() => setHovered(index)}
             onMouseLeave={() => setHovered(null)}
             className={cn(
-              "flex-none relative rounded-3xl overflow-hidden transition-all duration-500 ease-out bg-neutral-200 dark:bg-neutral-800",
+              "flex-none relative rounded-3xl overflow-hidden transition-all duration-500 ease-out border border-border bg-secondary",
               card.aspect === "portrait"
                 ? "w-[280px] md:w-[350px]"
                 : card.aspect === "landscape"
@@ -76,8 +75,9 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
                   : "w-[300px] md:w-[450px]",
               hovered !== null &&
                 hovered !== index &&
-                "blur-md scale-[0.95] opacity-40",
-              hovered === index && "scale-105 z-10 shadow-2xl",
+                "blur-[2px] scale-[0.98] opacity-50 grayscale",
+              hovered === index &&
+                "scale-105 z-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_50px_rgba(255,255,255,0.1)]",
             )}
             style={{
               aspectRatio:
@@ -91,16 +91,17 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
             <img
               src={card.src}
               alt={card.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               loading="lazy"
             />
+            {/* Monochrome Overlay */}
             <div
               className={cn(
-                "absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 md:p-10 transition-opacity duration-500",
+                "absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent flex items-end p-6 md:p-10 transition-opacity duration-500",
                 hovered === index ? "opacity-100" : "opacity-0",
               )}
             >
-              <div className="text-xl md:text-3xl font-bold text-white whitespace-normal leading-tight">
+              <div className="text-xl md:text-3xl font-black text-foreground whitespace-normal leading-tight tracking-tighter uppercase">
                 {card.title}
               </div>
             </div>
@@ -108,9 +109,9 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
         ))}
       </motion.div>
 
-      {/* Soft edge gradients */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white dark:from-neutral-950 to-transparent z-20" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white dark:from-neutral-950 to-transparent z-20" />
+      {/* Edge gradients using your CSS variables */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-background to-transparent z-20" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-background to-transparent z-20" />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-
 import { encode } from "qss";
 import React from "react";
 import {
@@ -9,7 +8,6 @@ import {
   useMotionValue,
   useSpring,
 } from "motion/react";
-
 import { cn } from "@/lib/utils";
 
 type LinkPreviewProps = {
@@ -55,7 +53,6 @@ export const LinkPreview = ({
   }
 
   const [isOpen, setOpen] = React.useState(false);
-
   const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -64,7 +61,6 @@ export const LinkPreview = ({
 
   const springConfig = { stiffness: 100, damping: 15 };
   const x = useMotionValue(0);
-
   const translateX = useSpring(x, springConfig);
 
   const handleMouseMove = (event: any) => {
@@ -91,14 +87,17 @@ export const LinkPreview = ({
       >
         <HoverCardPrimitive.Trigger
           onMouseMove={handleMouseMove}
-          className={cn("text-black dark:text-white", className)}
-          href={url}
+          className={cn(
+            "text-foreground hover:text-primary transition-colors duration-200 cursor-pointer font-medium underline underline-offset-4 decoration-border hover:decoration-primary",
+            className,
+          )}
+          asChild
         >
-          {children}
+          <a href={url}>{children}</a>
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content
-          className="[transform-origin:var(--radix-hover-card-content-transform-origin)]"
+          className="[transform-origin:var(--radix-hover-card-content-transform-origin)] z-50"
           side="top"
           align="center"
           sideOffset={10}
@@ -118,21 +117,22 @@ export const LinkPreview = ({
                   },
                 }}
                 exit={{ opacity: 0, y: 20, scale: 0.6 }}
-                className="shadow-xl rounded-xl"
+                className="shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(255,255,255,0.08)] rounded-2xl"
                 style={{
                   x: translateX,
                 }}
               >
                 <a
                   href={url}
-                  className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
+                  className="block p-1 bg-background border border-border rounded-2xl transition-all duration-300 hover:border-primary/50"
                   style={{ fontSize: 0 }}
                 >
                   <img
                     src={isStatic ? imageSrc : src}
                     width={width}
                     height={height}
-                    className="rounded-lg"
+                    // REPLACED: Removed 'grayscale' class to keep it full color
+                    className="rounded-xl object-cover"
                     alt="preview image"
                   />
                 </a>

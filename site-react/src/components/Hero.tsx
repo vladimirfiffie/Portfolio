@@ -1,13 +1,11 @@
 "use client";
 import { Spotlight } from "@/components/ui/spotlight-new";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const Hero = () => {
   return (
-    <section className="w-screen relative overflow-hidden bg-neutral-950">
+    <section className="w-screen relative overflow-hidden bg-background border-b border-border">
       <div className="relative w-full min-h-screen flex flex-col items-center justify-center pt-32 pb-20 md:pt-40 md:pb-32">
-        {/* Container for the Spotlight.*/}
-
         <div className="absolute -top-40 left-0 md:left-60 md:-top-20 pointer-events-none z-0">
           <Spotlight />
         </div>
@@ -16,81 +14,76 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative z-10 mx-auto max-w-6xl text-center text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-slate-900 dark:text-slate-50 leading-tight"
+          className="relative z-10 mx-auto max-w-6xl text-center text-4xl sm:text-5xl md:text-6xl lg:text-9xl font-black text-foreground leading-none tracking-tighter uppercase px-4"
         >
-          Hi, I&apos;m Vladimir — a Creative IT Graduate
+          Hi, I&apos;m Vladimir<span className="text-primary">.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="relative z-10 mt-6 max-w-3xl text-center text-lg md:text-xl lg:text-2xl font-normal text-neutral-600 dark:text-neutral-300"
+          className="relative z-10 mt-6 max-w-2xl text-center text-lg md:text-xl font-bold uppercase tracking-tight text-foreground px-4"
         >
-          I create engaging digital experiences, combining coding and thoughtful
-          design to build applications that are both functional and beautiful.
+          Creative IT Graduate building functional, high-contrast digital
+          experiences.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="relative z-10 mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+          className="relative z-10 mt-12"
         >
+          {/* Button updated to match BackgroundBeamsDemo style: No Radius, No Grays */}
           <motion.a
             href="/assets/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative px-8 py-3 rounded-lg border border-neutral-700 text-neutral-300 text-lg overflow-hidden group"
+            className="relative px-10 py-4 border border-border bg-background text-foreground overflow-hidden cursor-pointer inline-block"
             whileHover="hover"
             initial="initial"
+            whileTap={{ scale: 0.98 }}
           >
             <motion.div
-              className="absolute inset-0 bg-neutral-100"
-              initial={{ x: "-100%" }}
-              variants={{
-                hover: { x: 0 },
-              }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute inset-0 bg-primary"
+              initial={{ y: "100%" }}
+              variants={{ hover: { y: 0 } }}
+              transition={{ duration: 0.25, ease: "circOut" }}
             />
-            <motion.span className="relative z-10 text-neutral-300 transition-colors duration-300 group-hover:text-neutral-900">
+            <motion.span
+              variants={{
+                initial: { color: "var(--foreground)" },
+                hover: { color: "var(--primary-foreground)" },
+              }}
+              className="relative z-10 font-black uppercase tracking-widest text-sm"
+            >
               View My Resume
             </motion.span>
           </motion.a>
         </motion.div>
 
-        {/* Scroll Down Animation */}
-        <motion.div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <motion.span
-            animate={{
-              opacity: [0.4, 1, 0.4],
-              y: [0, 5, 0],
-            }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-xs md:text-sm font-semibold text-slate-900 dark:text-slate-50 tracking-widest uppercase"
-          >
-            Scroll to explore
-          </motion.span>
-          <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg
-              className="w-6 h-6 text-slate-900 dark:text-slate-50"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </motion.div>
+        {/* Minimalist Animated Mouse Scroll */}
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+        >
+          <div className="w-[26px] h-[42px] border-2 border-foreground rounded-full flex justify-center p-2">
+            <motion.div
+              animate={{
+                y: [0, 15, 0],
+                opacity: [1, 0, 1],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="w-1 h-2 bg-foreground rounded-full"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

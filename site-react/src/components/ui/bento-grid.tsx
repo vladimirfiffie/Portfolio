@@ -12,7 +12,7 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
+        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[20rem] md:grid-cols-3",
         className,
       )}
     >
@@ -37,17 +37,24 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+        // Removed neutral-200 and shadow-input
+        // Added var-based border, secondary background, and spring transition
+        "group/bento row-span-1 flex flex-col justify-between space-y-4 rounded-3xl border border-border bg-secondary/30 p-4 transition-all duration-300 hover:bg-secondary/50 hover:border-primary/50",
         className,
       )}
     >
-      {header}
-      <div className="transition duration-200 group-hover/bento:translate-x-2">
-        {icon}
-        <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
+      {/* Header container for your Skeleton animations */}
+      <div className="flex flex-1 w-full h-full min-h-[6rem]">{header}</div>
+
+      <div className="transition duration-300 group-hover/bento:translate-x-1">
+        {/* Icon is now primary-colored by default */}
+        <div className="text-primary">{icon}</div>
+
+        <div className="mt-2 mb-1 font-sans font-black text-foreground uppercase tracking-tighter text-lg leading-none">
           {title}
         </div>
-        <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300">
+
+        <div className="font-sans text-sm font-medium text-muted-foreground leading-relaxed">
           {description}
         </div>
       </div>

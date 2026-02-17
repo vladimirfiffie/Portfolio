@@ -7,8 +7,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
-
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -21,43 +20,15 @@ interface NavBodyProps {
   visible?: boolean;
 }
 
-interface NavItemsProps {
-  items: {
-    name: string;
-    link: string;
-  }[];
-  className?: string;
-  onItemClick?: () => void;
-}
-
-interface MobileNavProps {
-  children: React.ReactNode;
-  className?: string;
-  visible?: boolean;
-}
-
-interface MobileNavHeaderProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-interface MobileNavMenuProps {
-  children: React.ReactNode;
-  className?: string;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
+/**
+ * NAVBAR ROOT
+ */
 export const Navbar = ({ children, className }: NavbarProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+  const { scrollY } = useScroll();
   const [visible, setVisible] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 100) {
+    if (latest > 30) {
       setVisible(true);
     } else {
       setVisible(false);
@@ -65,10 +36,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   });
 
   return (
-    <motion.div
-      ref={ref}
-      className={cn("sticky inset-x-0 top-20 z-40 w-full", className)}
-    >
+    <div className={cn("fixed inset-x-0 top-0 z-50 w-full pt-4", className)}>
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
@@ -77,201 +45,183 @@ export const Navbar = ({ children, className }: NavbarProps) => {
             )
           : child,
       )}
-    </motion.div>
-  );
-};
-
-export const NavBody = ({ children, className, visible }: NavBodyProps) => {
-  return (
-    <motion.div
-      animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
-        boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
-          : "none",
-        y: visible ? 16 : 0,
-        scaleX: visible ? 0.92 : 1,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 240,
-        damping: 28,
-      }}
-      style={{
-        transformOrigin: "center top",
-      }}
-      className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between rounded-full bg-transparent px-6 py-4 lg:flex",
-        visible && "bg-white/80 dark:bg-neutral-950/80",
-        className,
-      )}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
-  const [hovered, setHovered] = useState<number | null>(null);
-
-  return (
-    <motion.div
-      onMouseLeave={() => setHovered(null)}
-      className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-lg lg:text-xl font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
-        className,
-      )}
-    >
-      {items.map((item, idx) => (
-        <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </a>
-      ))}
-    </motion.div>
-  );
-};
-
-export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
-  return (
-    <motion.div
-      animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
-        boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
-          : "none",
-        width: visible ? "90%" : "100%",
-        paddingRight: visible ? "12px" : "0px",
-        paddingLeft: visible ? "12px" : "0px",
-        borderRadius: visible ? "4px" : "2rem",
-        y: visible ? 20 : 0,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 50,
-      }}
-      className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
-        visible && "bg-white/80 dark:bg-neutral-950/80",
-        className,
-      )}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-export const MobileNavHeader = ({
-  children,
-  className,
-}: MobileNavHeaderProps) => {
-  return (
-    <div
-      className={cn(
-        "flex w-full flex-row items-center justify-between",
-        className,
-      )}
-    >
-      {children}
     </div>
   );
 };
 
-export const MobileNavMenu = ({
-  children,
-  className,
-  isOpen,
-  onClose,
-}: MobileNavMenuProps) => {
+/**
+ * DESKTOP NAVIGATION BODY (Floating Glass Pill)
+ */
+export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
-            className,
-          )}
-        >
-          {children}
-        </motion.div>
+    <motion.div
+      animate={{
+        // Switched to semi-transparent backgrounds for the blur effect
+        backgroundColor: visible
+          ? "rgba(var(--background-rgb), 0.7)"
+          : "rgba(var(--background-rgb), 0)",
+        borderColor: visible ? "var(--border)" : "transparent",
+        scale: visible ? 0.98 : 1,
+        y: visible ? 0 : 4,
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={cn(
+        "relative z-[60] mx-auto hidden w-[fit-content] min-w-[550px] flex-row items-center justify-between rounded-full border bg-transparent px-6 py-2 lg:flex transition-all duration-300",
+        // Backdrop blur is key here
+        visible && "backdrop-blur-md shadow-xl border-border",
+        className,
       )}
-    </AnimatePresence>
-  );
-};
-
-export const MobileNavToggle = ({
-  isOpen,
-  onClick,
-}: {
-  isOpen: boolean;
-  onClick: () => void;
-}) => {
-  return isOpen ? (
-    <IconX className="text-black dark:text-white" onClick={onClick} />
-  ) : (
-    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
-  );
-};
-
-export const NavbarLogo = () => {
-  return (
-    <a
-      href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <span className="font-bold text-lg text-black dark:text-white">VF</span>
-    </a>
+      {children}
+    </motion.div>
   );
 };
 
+/**
+ * NAV LINKS
+ */
+export const NavItems = ({ items, className, onItemClick }: any) => {
+  const [hovered, setHovered] = useState<number | null>(null);
+
+  return (
+    <div
+      onMouseLeave={() => setHovered(null)}
+      className={cn(
+        "flex flex-1 flex-row items-center justify-center gap-1",
+        className,
+      )}
+    >
+      {items.map((item: any, idx: number) => (
+        <a
+          key={`link-${idx}`}
+          href={item.link}
+          onMouseEnter={() => setHovered(idx)}
+          onClick={onItemClick}
+          className="relative px-5 py-2 text-foreground font-bold uppercase tracking-widest text-[10px] transition-colors hover:text-primary"
+        >
+          <AnimatePresence>
+            {hovered === idx && (
+              <motion.div
+                layoutId="nav-hover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 z-0 rounded-full bg-primary/10"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+              />
+            )}
+          </AnimatePresence>
+          <span className="relative z-10">{item.name}</span>
+        </a>
+      ))}
+    </div>
+  );
+};
+
+/**
+ * MOBILE NAVIGATION CONTAINER (Floating Glass Pill)
+ */
+export const MobileNav = ({ children, className, visible }: any) => {
+  return (
+    <motion.div
+      animate={{
+        backgroundColor: visible
+          ? "rgba(var(--background-rgb), 0.7)"
+          : "rgba(var(--background-rgb), 0)",
+        width: visible ? "92%" : "100%",
+        borderRadius: "100px",
+        borderColor: visible ? "var(--border)" : "transparent",
+        y: visible ? 0 : 10,
+      }}
+      className={cn(
+        "relative z-50 mx-auto flex w-full flex-col items-center justify-between border px-6 py-3 lg:hidden transition-all duration-300",
+        visible && "backdrop-blur-md shadow-lg",
+        className,
+      )}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/**
+ * MOBILE HEADER
+ */
+export const MobileNavHeader = ({ children, className }: any) => (
+  <div
+    className={cn(
+      "flex w-full flex-row items-center justify-between",
+      className,
+    )}
+  >
+    {children}
+  </div>
+);
+
+/**
+ * MOBILE TOGGLE BUTTON
+ */
+export const MobileNavToggle = ({ isOpen, onClick }: any) => (
+  <button
+    onClick={onClick}
+    className="text-foreground p-2 rounded-full border border-border/50 hover:bg-primary/5 transition-colors focus:outline-none"
+  >
+    {isOpen ? <IconX size={20} /> : <IconMenu2 size={20} />}
+  </button>
+);
+
+/**
+ * MOBILE EXPANDABLE MENU (Glass Sub-Pill)
+ */
+export const MobileNavMenu = ({ children, isOpen }: any) => (
+  <AnimatePresence>
+    {isOpen && (
+      <motion.div
+        initial={{ opacity: 0, height: 0, scale: 0.95 }}
+        animate={{ opacity: 1, height: "auto", scale: 1 }}
+        exit={{ opacity: 0, height: 0, scale: 0.95 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="w-full overflow-hidden"
+      >
+        <div className="flex w-full flex-col items-center justify-center gap-6 bg-background/80 backdrop-blur-lg rounded-[32px] border border-border mt-4 p-8 shadow-2xl">
+          {children}
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
+
+/**
+ * LOGO
+ */
+export const NavbarLogo = () => (
+  <a href="#" className="relative z-20 flex items-center px-4 py-1 group">
+    <span className="text-xl font-black tracking-tighter text-foreground uppercase">
+      VF
+      <span className="text-primary group-hover:scale-125 inline-block transition-transform">
+        .
+      </span>
+    </span>
+  </a>
+);
+
+/**
+ * ROUNDED BUTTON
+ */
 export const NavbarButton = ({
   href,
   as: Tag = "a",
   children,
   className,
-  variant = "primary",
   ...props
-}: {
-  href?: string;
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  variant?: "primary" | "secondary" | "dark" | "gradient";
-} & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
-  const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
-
-  const variantStyles = {
-    primary:
-      "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-    secondary: "bg-transparent shadow-none dark:text-white",
-    dark: "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-    gradient:
-      "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
-  };
-
+}: any) => {
   return (
     <Tag
-      href={href || undefined}
-      className={cn(baseStyles, variantStyles[variant], className)}
+      href={href}
+      className={cn(
+        "relative inline-block cursor-pointer bg-foreground px-6 py-2 text-center text-[10px] font-black uppercase tracking-[0.2em] text-background rounded-full border border-transparent transition-all duration-300 hover:bg-primary hover:text-primary-foreground active:scale-95 shadow-sm",
+        className,
+      )}
       {...props}
     >
       {children}

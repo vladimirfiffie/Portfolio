@@ -12,21 +12,31 @@ import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans antialiased">
+    /* Changed dark:bg-neutral-950 to dark:bg-background to use your CSS variables */
+    <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-primary-foreground">
       <Nav />
 
       <main>
-        <div className="relative">
+        {/* HERO SECTION */}
+        <section className="relative overflow-hidden">
           <Spotlight />
           <Hero />
-        </div>
+        </section>
+
+        {/* CONTENT SECTIONS */}
         <About />
-        <TimelineDemo />
+
+        {/* We wrap Timeline in a container to manage the B&W borders if needed */}
+        <section className="border-t border-border bg-background">
+          <TimelineDemo />
+        </section>
+
         <Projects />
 
+        {/* CONTACT SECTION */}
         <section
           id="contact"
-          className="py-20 px-4 md:px-8 relative overflow-hidden"
+          className="relative overflow-hidden border-t border-border"
         >
           <BackgroundBeamsDemo />
         </section>

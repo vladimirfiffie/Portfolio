@@ -1,4 +1,6 @@
+"use client";
 import { Timeline } from "@/components/ui/timeline";
+import { motion } from "framer-motion";
 
 export function TimelineDemo() {
   const data = [
@@ -6,67 +8,39 @@ export function TimelineDemo() {
       title: "2024",
       content: (
         <div>
-          <p className="mb-8 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
-            Built two major projects: <strong>Pao&apos;er Ship</strong>, a
-            Pygame Battleship for Raspberry Pi, and{" "}
-            <strong>Lion&apos;s Den Cinema</strong>, a booking platform where I
-            designed the web UI.
+          <p className="mb-8 text-sm md:text-base lg:text-lg font-bold uppercase tracking-tight text-foreground leading-tight">
+            Built two major projects:{" "}
+            <span className="text-primary underline decoration-2 underline-offset-4">
+              Pao&apos;er Ship
+            </span>
+            , a Pygame Battleship for Raspberry Pi, and{" "}
+            <span className="text-primary underline decoration-2 underline-offset-4">
+              Lion&apos;s Den Cinema
+            </span>
+            , a booking platform where I designed the web UI.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <ProjectCard
-              title="Pao'er Ship"
-              color="from-blue-500/20 to-cyan-500/20"
-              borderColor="border-blue-500/50"
-            />
-            <ProjectCard
-              title="Lion's Den Cinema"
-              color="from-purple-500/20 to-pink-500/20"
-              borderColor="border-purple-500/50"
-            />
-            <ProjectCard
-              title="React & TypeScript"
-              color="from-emerald-500/20 to-teal-500/20"
-              borderColor="border-emerald-500/50"
-            />
-            <ProjectCard
-              title="Full Stack Dev"
-              color="from-orange-500/20 to-red-500/20"
-              borderColor="border-orange-500/50"
-            />
+          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
+            <ProjectCard title="Pao'er Ship" />
+            <ProjectCard title="Lion's Den Cinema" />
+            <ProjectCard title="React & TypeScript" />
+            <ProjectCard title="Full Stack Dev" />
           </div>
         </div>
       ),
     },
-
     {
       title: "2025",
       content: (
         <div>
-          <p className="mb-8 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
+          <p className="mb-8 text-sm md:text-base lg:text-lg font-bold uppercase tracking-tight text-foreground leading-tight">
             Graduated and focused on building skills in React, animations, and
             full-stack development.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <ProjectCard
-              title="Portfolio"
-              color="from-blue-500/20 to-indigo-500/20"
-              borderColor="border-blue-500/50"
-            />
-            <ProjectCard
-              title="Framer Motion"
-              color="from-cyan-500/20 to-sky-500/20"
-              borderColor="border-cyan-500/50"
-            />
-            <ProjectCard
-              title="Learning Projects"
-              color="from-violet-500/20 to-purple-500/20"
-              borderColor="border-violet-500/50"
-            />
-            <ProjectCard
-              title="Continuous Learning"
-              color="from-pink-500/20 to-rose-500/20"
-              borderColor="border-pink-500/50"
-            />
+          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
+            <ProjectCard title="Portfolio" />
+            <ProjectCard title="Framer Motion" />
+            <ProjectCard title="Learning Projects" />
+            <ProjectCard title="Continuous Learning" />
           </div>
         </div>
       ),
@@ -75,41 +49,28 @@ export function TimelineDemo() {
       title: "2026",
       content: (
         <div>
-          <p className="mb-8 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
-            "Portfolio launched. Currently building Airflow, a flight SaaS, with
-            a focus on scalable React applications and high-performance UX
-            design."
+          <p className="mb-8 text-sm md:text-base lg:text-lg font-bold uppercase tracking-tight text-foreground leading-tight">
+            &quot;Portfolio launched. Currently building{" "}
+            <span className="text-primary underline decoration-2 underline-offset-4">
+              Airflow
+            </span>
+            , a flight SaaS, with a focus on scalable React applications and
+            high-performance UX design.&quot;
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <ProjectCard
-              title="Portfolio"
-              color="from-blue-500/20 to-indigo-500/20"
-              borderColor="border-blue-500/50"
-            />
-            <ProjectCard
-              title="Airflow (In Progress)"
-              color="from-violet-500/20 to-purple-500/20"
-              borderColor="border-violet-500/50"
-            />
-            <ProjectCard
-              title="Framer Motion"
-              color="from-cyan-500/20 to-sky-500/20"
-              borderColor="border-cyan-500/50"
-            />
-            <ProjectCard
-              title="Continuous Learning"
-              color="from-pink-500/20 to-rose-500/20"
-              borderColor="border-pink-500/50"
-            />
+          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
+            <ProjectCard title="Portfolio" />
+            <ProjectCard title="Airflow (In Progress)" />
+            <ProjectCard title="Framer Motion" />
+            <ProjectCard title="Continuous Learning" />
           </div>
         </div>
       ),
     },
     {
-      title: "Next Steps",
+      title: "NEXT",
       content: (
         <div>
-          <p className="mb-4 text-sm md:text-base lg:text-lg font-normal text-neutral-800 dark:text-neutral-200">
+          <p className="mb-4 text-sm md:text-base lg:text-lg font-bold uppercase tracking-tight text-foreground">
             Building scalable applications with modern technologies.
           </p>
           <ul className="mb-8 space-y-2">
@@ -120,33 +81,19 @@ export function TimelineDemo() {
             ].map((item) => (
               <li
                 key={item}
-                className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300"
+                className="flex items-center gap-2 text-xs text-foreground md:text-sm font-black uppercase tracking-widest"
               >
+                <div className="h-2 w-2 bg-primary" />{" "}
+                {/* Square bullet instead of round */}
                 {item}
               </li>
             ))}
           </ul>
-          <div className="grid grid-cols-2 gap-4">
-            <ProjectCard
-              title="Backend Dev"
-              color="from-green-500/20 to-emerald-500/20"
-              borderColor="border-green-500/50"
-            />
-            <ProjectCard
-              title="Databases"
-              color="from-yellow-500/20 to-amber-500/20"
-              borderColor="border-yellow-500/50"
-            />
-            <ProjectCard
-              title="API Design"
-              color="from-red-500/20 to-orange-500/20"
-              borderColor="border-red-500/50"
-            />
-            <ProjectCard
-              title="Growth"
-              color="from-fuchsia-500/20 to-purple-500/20"
-              borderColor="border-fuchsia-500/50"
-            />
+          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
+            <ProjectCard title="Backend Dev" />
+            <ProjectCard title="Databases" />
+            <ProjectCard title="API Design" />
+            <ProjectCard title="Growth" />
           </div>
         </div>
       ),
@@ -156,23 +103,32 @@ export function TimelineDemo() {
   return <Timeline data={data} />;
 }
 
-// Small helper component for the grid boxes
-function ProjectCard({
-  title,
-  color,
-  borderColor,
-}: {
-  title: string;
-  color: string;
-  borderColor: string;
-}) {
+function ProjectCard({ title }: { title: string }) {
   return (
-    <div
-      className={`h-20 md:h-44 lg:h-60 rounded-lg bg-gradient-to-br ${color} border ${borderColor} flex items-center justify-center`}
+    <motion.div
+      whileHover="hover"
+      initial="initial"
+      className="h-20 md:h-44 lg:h-60 border-r border-b border-border bg-background flex items-center justify-center relative overflow-hidden group cursor-default"
     >
-      <span className="text-xs md:text-sm text-neutral-800 dark:text-white font-semibold text-center px-2">
+      {/* High-contrast fill animation on hover */}
+      <motion.div
+        className="absolute inset-0 bg-primary"
+        variants={{
+          initial: { y: "100%" },
+          hover: { y: 0 },
+        }}
+        transition={{ duration: 0.2, ease: "linear" }}
+      />
+
+      <motion.span
+        variants={{
+          initial: { color: "var(--foreground)" },
+          hover: { color: "var(--primary-foreground)" },
+        }}
+        className="relative z-10 text-xs md:text-sm font-black uppercase tracking-tighter text-center px-4"
+      >
         {title}
-      </span>
-    </div>
+      </motion.span>
+    </motion.div>
   );
 }

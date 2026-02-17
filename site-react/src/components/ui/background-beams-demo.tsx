@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { BackgroundBeams } from "../ui/background-beams";
+import { BackgroundBeams } from "./background-beams";
 import { motion } from "motion/react";
 
 export function BackgroundBeamsDemo() {
@@ -18,98 +18,53 @@ export function BackgroundBeamsDemo() {
   };
 
   return (
-    <div className="h-[40rem] w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased overflow-hidden">
-      <div className="max-w-2xl mx-auto p-4 relative z-10">
-        <h1 className="relative z-10 text-lg md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 text-center font-sans font-bold">
-          Connect With Me
+    <div
+      id="contact"
+      className="h-[40rem] w-full bg-background relative flex flex-col items-center justify-center antialiased overflow-hidden"
+    >
+      <div className="max-w-4xl mx-auto p-4 relative z-10">
+        <h1 className="relative z-10 text-5xl md:text-8xl text-foreground text-center font-black tracking-tighter uppercase leading-none">
+          CONNECT WITH ME<span className="text-primary">.</span>
         </h1>
 
-        <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
-          I'm always interested in hearing about new projects and creative
-          opportunities. Whether you have an exciting idea to explore or need
-          help bringing your vision to life, feel free to reach out. Let's
-          collaborate and create something amazing together.
+        <p className="text-foreground max-w-lg mx-auto my-8 text-sm md:text-base text-center relative z-10 font-black uppercase tracking-tight">
+          I&apos;m always interested in hearing about new projects and creative
+          opportunities. Let&apos;s collaborate and create something amazing
+          together.
         </p>
 
-        {/* Contact Links */}
-        <div className="flex justify-center gap-4 mt-6 relative z-10 flex-wrap">
-          {/* Email — Copy to Clipboard */}
-          <motion.button
-            onClick={handleCopy}
-            className="relative px-6 py-2 rounded-lg border border-neutral-700 text-neutral-300 overflow-hidden"
-            whileHover="hover"
-            initial="initial"
-          >
-            <motion.div
-              className="absolute inset-0 bg-neutral-300"
-              initial={{ x: "-100%" }}
-              variants={{ hover: { x: 0 } }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            />
-
-            <motion.span
-              initial={{ color: "rgb(212, 212, 212)" }}
-              variants={{ hover: { color: "rgb(13, 13, 13)" } }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="relative z-10"
-            >
-              {copied ? "Copied!" : "Email"}
-            </motion.span>
-          </motion.button>
-
-          {/* GitHub */}
-          <motion.a
-            href="https://github.com/vladimirfiffie"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative px-6 py-2 rounded-lg border border-neutral-700 text-neutral-300 overflow-hidden"
-            whileHover="hover"
-            initial="initial"
-          >
-            <motion.div
-              className="absolute inset-0 bg-neutral-300"
-              initial={{ x: "-105%" }}
-              variants={{ hover: { x: 0 } }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            />
-            <motion.span
-              initial={{ color: "rgb(212, 212, 212)" }}
-              variants={{ hover: { color: "rgb(13, 13, 13)" } }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="relative z-10"
-            >
-              GitHub
-            </motion.span>
-          </motion.a>
-
-          {/* LinkedIn */}
-          <motion.a
-            href="https://www.linkedin.com/in/vladimir-fiffie/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative px-6 py-2 rounded-lg border border-neutral-700 text-neutral-300 overflow-hidden"
-            whileHover="hover"
-            initial="initial"
-          >
-            <motion.div
-              className="absolute inset-0 bg-neutral-300"
-              initial={{ x: "-110%" }}
-              variants={{ hover: { x: 0 } }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            />
-            <motion.span
-              initial={{ color: "rgb(212, 212, 212)" }}
-              variants={{ hover: { color: "rgb(13, 13, 13)" } }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="relative z-10"
-            >
-              LinkedIn
-            </motion.span>
-          </motion.a>
+        <div className="flex justify-center gap-6 mt-8 relative z-10 flex-wrap">
+          {[
+            { label: "Email", action: handleCopy, isCopy: true, href: null },
+            { label: "GitHub", href: "https://github.com/vladimirfiffie" },
+            {
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/in/vladimir-fiffie/",
+            },
+          ].map((link) => {
+            const Component = link.href ? motion.a : motion.button;
+            return (
+              <Component
+                key={link.label}
+                href={link.href as string}
+                target={link.href ? "_blank" : undefined}
+                rel={link.href ? "noopener noreferrer" : undefined}
+                onClick={link.action}
+                className="relative px-8 py-3 bg-background border-2 border-foreground text-foreground cursor-pointer transition-all duration-75 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:shadow-none active:translate-x-[4px] active:translate-y-[4px]"
+                whileHover={{
+                  backgroundColor: "var(--foreground)",
+                  color: "var(--background)",
+                }}
+              >
+                <span className="relative z-10 font-black uppercase tracking-[0.2em] text-xs">
+                  {link.isCopy && copied ? "Copied!" : link.label}
+                </span>
+              </Component>
+            );
+          })}
         </div>
       </div>
-
-      <BackgroundBeams className="left-1/2 -translate-x-1/2 w-screen" />
+      <BackgroundBeams />
     </div>
   );
 }

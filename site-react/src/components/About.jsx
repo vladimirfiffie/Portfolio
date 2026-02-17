@@ -1,31 +1,46 @@
+"use client";
 import Skills from "./Skills";
+import { motion } from "motion/react";
 
 export default function About() {
   return (
     <section
       id="about"
-      className="w-screen relative overflow-hidden py-20 md:py-32 bg-gray-50 dark:bg-neutral-950"
+      /* Changed border-border/50 to border-border for a solid B&W line */
+      className="w-screen relative overflow-hidden py-20 md:py-32 bg-background border-y border-border"
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col items-center">
-        {/* About text and skills */}
-        <div className="max-w-3xl w-full text-center">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 dark:text-white">
-            A Bit About Me
-          </h2>
+        <div className="max-w-4xl w-full text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            /* Matched font-black, uppercase, and tracking-tighter from Hero */
+            className="text-4xl md:text-5xl lg:text-8xl font-black mb-12 text-foreground uppercase tracking-tighter leading-none"
+          >
+            A Bit About Me<span className="text-primary">.</span>
+          </motion.h2>
 
-          <div className="space-y-4 text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            /* Changed muted-foreground to foreground and added font-bold */
+            className="space-y-6 text-lg md:text-xl text-foreground mb-16 leading-tight uppercase font-bold tracking-tight"
+          >
             <p>
-              I'm an Information Technology graduate with a passion for creating
-              engaging digital experiences. I specialize in combining creative
-              coding with thoughtful design to build applications that are both
-              functional and beautiful.
+              I&apos;m an Information Technology graduate with a passion for
+              creating engaging digital experiences. I specialize in combining
+              creative coding with thoughtful design to build applications that
+              are both functional and beautiful.
             </p>
             <p>
-              When I'm not coding, I'm exploring new technologies, experimenting
-              with design patterns, and always looking for ways to push the
-              boundaries of what's possible on the web.
+              When I&apos;m not coding, I&apos;m exploring new technologies,
+              experimenting with design patterns, and always looking for ways to
+              push the boundaries of what&apos;s possible on the web.
             </p>
-          </div>
+          </motion.div>
 
           <Skills />
         </div>
