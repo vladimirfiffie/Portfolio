@@ -34,6 +34,8 @@
 
 html {
     scroll-behavior: smooth;
+    /* Adjust this value to match your navbar's height + gap */
+    scroll-padding-top: 100px;
 }
 
 html,

@@ -1,4 +1,6 @@
 "use client";
+import { useState } from "react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import {
   Navbar,
   NavBody,
@@ -8,66 +10,56 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
+  scrollToSection,
 } from "@/components/ui/resizable-navbar";
-import { useState } from "react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+
+const NAV_ITEMS = [
+  { name: "About", link: "#about" },
+  { name: "Journey", link: "#journey" },
+  { name: "Projects", link: "#projects" },
+  { name: "Contact", link: "#contact" },
+];
 
 export default function Nav() {
-  const navItems = [
-    { name: "About", link: "#about" },
-    { name: "Journey", link: "#journey" },
-    { name: "Projects", link: "#projects" },
-    { name: "Contact", link: "#contact" },
-  ];
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    // Note: The Navbar component already handles the "fixed" positioning internally,
-    // but keeping this wrapper is fine for extra padding control.
-    <div className="fixed top-0 left-0 right-0 z-50">
-      <Navbar>
-        {/* Desktop Navigation - Glass Pill */}
-        <NavBody>
-          <div className="flex items-center gap-8">
-            <NavbarLogo />
-            <NavItems items={navItems} />
-            <div className="flex items-center gap-4">
-              <ThemeToggle />
-            </div>
+    <Navbar>
+      {/* Desktop View */}
+      <NavBody className="gap-8">
+        <NavbarLogo />
+        <NavItems items={NAV_ITEMS} />
+        <ThemeToggle />
+      </NavBody>
+
+      {/* Mobile View */}
+      <MobileNav>
+        <MobileNavHeader>
+          <NavbarLogo />
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <MobileNavToggle
+              isOpen={isOpen}
+              onClick={() => setIsOpen(!isOpen)}
+            />
           </div>
-        </NavBody>
-
-        {/* Mobile Navigation - Glass Pill */}
-        <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo />
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <MobileNavToggle
-                isOpen={isMobileMenuOpen}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              />
-            </div>
-          </MobileNavHeader>
-
-          {/* Mobile Menu - Glass Extension */}
-          <MobileNavMenu isOpen={isMobileMenuOpen}>
-            <div className="flex flex-col items-center w-full">
-              {navItems.map((item, idx) => (
-                <a
-                  key={`mobile-link-${idx}`}
-                  href={item.link}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full text-center text-foreground hover:text-primary transition-all py-5 text-xl font-black uppercase tracking-[0.25em] border-b border-border/10 last:border-none active:scale-95"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </MobileNavMenu>
-        </MobileNav>
-      </Navbar>
-    </div>
+        </MobileNavHeader>
+        <MobileNavMenu isOpen={isOpen}>
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.link}
+              href={item.link}
+              onClick={(e) => {
+                setIsOpen(false);
+                scrollToSection(e, item.link);
+              }}
+              className="w-full text-center py-4 text-2xl font-black uppercase tracking-widest text-foreground/50 hover:text-foreground transition-colors cursor-pointer"
+            >
+              {item.name}
+            </a>
+          ))}
+        </MobileNavMenu>
+      </MobileNav>
+    </Navbar>
   );
 }

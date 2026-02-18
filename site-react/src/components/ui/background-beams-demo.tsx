@@ -17,6 +17,12 @@ export function BackgroundBeamsDemo() {
     }
   };
 
+  const links = [
+    { label: "Email", action: handleCopy, isCopy: true, href: null },
+    { label: "GitHub", href: "https://github.com/vladimirfiffie" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/vladimir-fiffie/" },
+  ];
+
   return (
     <div
       id="contact"
@@ -34,32 +40,57 @@ export function BackgroundBeamsDemo() {
         </p>
 
         <div className="flex justify-center gap-6 mt-8 relative z-10 flex-wrap">
-          {[
-            { label: "Email", action: handleCopy, isCopy: true, href: null },
-            { label: "GitHub", href: "https://github.com/vladimirfiffie" },
-            {
-              label: "LinkedIn",
-              href: "https://www.linkedin.com/in/vladimir-fiffie/",
-            },
-          ].map((link) => {
-            const Component = link.href ? motion.a : motion.button;
+          {links.map((link) => {
+            /*
+             * DARK MODE FIX: All contact buttons now use the same brutalist
+             * border + shadow-offset style as the "Available for Work" badge
+             * in the footer. Works in both light and dark mode via CSS variables.
+             *
+             * Pattern:
+             *   - border-2 border-foreground  → sharp black (light) / white (dark) border
+             *   - shadow-[4px_4px_0px_0px_var(--foreground)]  → offset shadow
+             *   - hover: bg-foreground + text-background  → inverted fill
+             *   - active: translate + remove shadow → pressed effect
+             */
+            const sharedClass = [
+              "relative inline-flex items-center justify-center px-8 py-3 cursor-pointer",
+              "border-2 border-foreground bg-background text-foreground",
+              "shadow-[4px_4px_0px_0px_var(--foreground)]",
+              "hover:bg-foreground hover:text-background",
+              "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
+              "transition-all duration-100",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            ].join(" ");
+
+            if (link.href) {
+              return (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={sharedClass}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <span className="font-black uppercase tracking-[0.2em] text-xs">
+                    {link.label}
+                  </span>
+                </motion.a>
+              );
+            }
+
             return (
-              <Component
+              <motion.button
                 key={link.label}
-                href={link.href as string}
-                target={link.href ? "_blank" : undefined}
-                rel={link.href ? "noopener noreferrer" : undefined}
+                type="button"
                 onClick={link.action}
-                className="relative px-8 py-3 bg-background border-2 border-foreground text-foreground cursor-pointer transition-all duration-75 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:shadow-none active:translate-x-1 active:translate-y-1"
-                whileHover={{
-                  backgroundColor: "var(--foreground)",
-                  color: "var(--background)",
-                }}
+                className={sharedClass}
+                whileTap={{ scale: 0.97 }}
               >
-                <span className="relative z-10 font-black uppercase tracking-[0.2em] text-xs">
+                <span className="font-black uppercase tracking-[0.2em] text-xs">
                   {link.isCopy && copied ? "Copied!" : link.label}
                 </span>
-              </Component>
+              </motion.button>
             );
           })}
         </div>

@@ -35,30 +35,31 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="relative z-10 mt-12"
         >
+          {/*
+           * DARK MODE FIX: Matches "Available for Work" brutalist button style.
+           * Uses border-2 + shadow offset trick consistent across light/dark.
+           * shadow color is explicit black/white per theme via Tailwind dark: variant.
+           */}
           <motion.a
             href="/assets/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative px-10 py-4 border border-border bg-background text-foreground overflow-hidden cursor-pointer inline-block"
-            whileHover="hover"
-            initial="initial"
+            className={[
+              "group relative inline-flex items-center px-10 py-4 cursor-pointer",
+              // Border + offset shadow (brutalist style, matches footer badge)
+              "border-2 border-foreground bg-background text-foreground",
+              "shadow-[4px_4px_0px_0px_var(--foreground)]",
+              // Hover: fill invert
+              "hover:bg-foreground hover:text-background",
+              // Active: remove shadow offset (pressed feel)
+              "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
+              "transition-all duration-100",
+            ].join(" ")}
             whileTap={{ scale: 0.98 }}
           >
-            <motion.div
-              className="absolute inset-0 bg-primary"
-              initial={{ y: "100%" }}
-              variants={{ hover: { y: 0 } }}
-              transition={{ duration: 0.25, ease: "circOut" }}
-            />
-            <motion.span
-              variants={{
-                initial: { color: "var(--foreground)" },
-                hover: { color: "var(--primary-foreground)" },
-              }}
-              className="relative z-10 font-black uppercase tracking-widest text-sm"
-            >
+            <span className="font-black uppercase tracking-widest text-sm">
               View My Resume
-            </motion.span>
+            </span>
           </motion.a>
         </motion.div>
 

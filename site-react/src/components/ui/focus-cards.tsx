@@ -101,10 +101,10 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
       </div>
 
       {/* Left fade */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-background/80 dark:from-background to-transparent z-20" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-linear-to-r from-background/80 dark:from-background to-transparent z-20" />
 
       {/* Right fade */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-background/80 dark:from-background to-transparent z-20" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-linear-to-l from-background/80 dark:from-background to-transparent z-20" />
     </div>
   );
 }
