@@ -1,12 +1,16 @@
 "use client";
 
-// Import the specific components from your new file
 import {
   Navbar,
   NavBody,
   NavItems,
   NavbarLogo,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
 } from "./components/ui/resizable-navbar";
+import { useState } from "react";
 
 import Hero from "./components/Hero";
 import { Spotlight } from "./components/ui/spotlight-new";
@@ -24,15 +28,42 @@ const NAV_LINKS = [
 ];
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
-      {/* Implementation of the Resizable Navbar structure */}
       <Navbar>
+        {/* Desktop */}
         <NavBody>
           <NavbarLogo />
           <NavItems items={NAV_LINKS} />
-
         </NavBody>
+
+        {/* Mobile */}
+        <MobileNav>
+          <MobileNavHeader>
+            <NavbarLogo />
+            <MobileNavToggle
+              isOpen={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
+          </MobileNavHeader>
+          <MobileNavMenu
+            isOpen={isMobileMenuOpen}
+            onClose={() => setIsMobileMenuOpen(false)}
+          >
+            {NAV_LINKS.map((item, idx) => (
+              <a
+                key={`mobile-link-${idx}`}
+                href={item.link}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full px-4 py-4 text-sm font-black uppercase tracking-widest text-foreground border-b border-border hover:bg-accent transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+          </MobileNavMenu>
+        </MobileNav>
       </Navbar>
 
       <main>

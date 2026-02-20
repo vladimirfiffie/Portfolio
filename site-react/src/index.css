@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @plugin "tailwindcss-animate";
 
 @theme {
@@ -35,19 +34,37 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    /*
+     * DO NOT put overflow-x: hidden here.
+     * Any overflow:hidden on an ancestor of a backdrop-filter element
+     * creates a new stacking context that silently disables the blur.
+     * Move horizontal overflow clamping to #root only.
+     */
 }
 
-html,
-body,
+body {
+    /*
+     * Same — no overflow-x: hidden on body.
+     * backdrop-filter: blur() requires the element NOT be clipped
+     * by an overflow:hidden ancestor anywhere in the tree.
+     */
+    min-height: 100%;
+}
+
 #root {
-    overflow-x: hidden;
-    height: 100%;
+    /*
+     * Contain horizontal overflow here instead — #root is not an
+     * ancestor of the fixed navbar (fixed elements escape normal flow),
+     * so this is safe and won't kill backdrop-filter.
+     */
+    overflow-x: clip;
+    /* `clip` instead of `hidden` — does NOT create stacking context */
+    min-height: 100%;
 }
 
 :root {
     --radius: 0.5rem;
 
-    /* Using standard oklch for v4 color system */
     --background: oklch(1 0 0);
     --foreground: oklch(0 0 0);
     --card: oklch(1 0 0);
