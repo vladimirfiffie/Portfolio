@@ -41,17 +41,7 @@ export function BackgroundBeamsDemo() {
 
         <div className="flex justify-center gap-6 mt-8 relative z-10 flex-wrap">
           {links.map((link) => {
-            /*
-             * DARK MODE FIX: All contact buttons now use the same brutalist
-             * border + shadow-offset style as the "Available for Work" badge
-             * in the footer. Works in both light and dark mode via CSS variables.
-             *
-             * Pattern:
-             *   - border-2 border-foreground  → sharp black (light) / white (dark) border
-             *   - shadow-[4px_4px_0px_0px_var(--foreground)]  → offset shadow
-             *   - hover: bg-foreground + text-background  → inverted fill
-             *   - active: translate + remove shadow → pressed effect
-             */
+
             const sharedClass = [
               "relative inline-flex items-center justify-center px-8 py-3 cursor-pointer",
               "border-2 border-foreground bg-background text-foreground",

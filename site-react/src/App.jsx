@@ -1,47 +1,62 @@
 "use client";
 
-import Nav from "./components/Nav";
+// Import the specific components from your new file
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  NavbarLogo,
+} from "./components/ui/resizable-navbar";
+
 import Hero from "./components/Hero";
 import { Spotlight } from "./components/ui/spotlight-new";
-import { BackgroundBeamsDemo } from "./components/ui/background-beams-demo";
-import Projects from "./components/Projects";
 import About from "./components/About";
 import { TimelineDemo } from "./components/Timeline";
+import Projects from "./components/Projects";
+import { BackgroundBeamsDemo } from "./components/ui/background-beams-demo";
 import Footer from "./components/Footer";
-import { Analytics } from "@vercel/analytics/react";
+
+const NAV_LINKS = [
+  { name: "About", link: "#about" },
+  { name: "Journey", link: "#journey" },
+  { name: "Projects", link: "#projects" },
+  { name: "Contact", link: "#contact" },
+];
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-primary-foreground">
-      <Nav />
+    <div className="min-h-screen bg-background text-foreground font-sans antialiased">
+      {/* Implementation of the Resizable Navbar structure */}
+      <Navbar>
+        <NavBody>
+          <NavbarLogo />
+          <NavItems items={NAV_LINKS} />
+
+        </NavBody>
+      </Navbar>
 
       <main>
-        {/* HERO SECTION */}
         <section className="relative overflow-hidden">
           <Spotlight />
           <Hero />
         </section>
 
-        {/* CONTENT SECTIONS */}
         <About />
 
-        <section className="border-t border-border bg-background">
+        <section id="journey" className="bg-background">
           <TimelineDemo />
         </section>
 
-        <Projects />
+        <section id="projects">
+          <Projects />
+        </section>
 
-        {/* CONTACT SECTION */}
-        <section
-          id="contact"
-          className="relative overflow-hidden border-t border-border"
-        >
+        <section id="contact" className="relative overflow-hidden border-t border-border">
           <BackgroundBeamsDemo />
         </section>
       </main>
 
       <Footer />
-      <Analytics />
     </div>
   );
 }

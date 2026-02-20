@@ -66,36 +66,6 @@ export function TimelineDemo() {
         </div>
       ),
     },
-    {
-      title: "NEXT",
-      content: (
-        <div>
-          <p className="mb-4 text-sm md:text-base lg:text-lg font-bold uppercase tracking-tight text-foreground">
-            Building scalable applications with modern technologies.
-          </p>
-          <ul className="mb-8 space-y-2">
-            {[
-              "Advanced React patterns",
-              "Compelling UX animations",
-              "Scalable deployments",
-            ].map((item) => (
-              <li
-                key={item}
-                className="flex items-center gap-2 text-xs text-foreground md:text-sm font-black uppercase tracking-widest"
-              >
-                <div className="h-2 w-2 bg-primary" /> {item}
-              </li>
-            ))}
-          </ul>
-          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
-            <ProjectCard title="Backend Dev" />
-            <ProjectCard title="Databases" />
-            <ProjectCard title="API Design" />
-            <ProjectCard title="Growth" />
-          </div>
-        </div>
-      ),
-    },
   ];
 
   return <Timeline data={data} />;

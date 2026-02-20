@@ -25,7 +25,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="relative z-10 mt-6 max-w-2xl text-center text-lg md:text-xl font-bold uppercase tracking-tight text-foreground px-4"
         >
-          Creative IT Graduate building functional, high-contrast digital
+          Creative IT Graduate building functional & digital
           experiences.
         </motion.p>
 
@@ -35,24 +35,16 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="relative z-10 mt-12"
         >
-          {/*
-           * DARK MODE FIX: Matches "Available for Work" brutalist button style.
-           * Uses border-2 + shadow offset trick consistent across light/dark.
-           * shadow color is explicit black/white per theme via Tailwind dark: variant.
-           */}
           <motion.a
             href="/assets/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className={[
               "group relative inline-flex items-center px-10 py-4 cursor-pointer",
-              // Border + offset shadow (brutalist style, matches footer badge)
               "border-2 border-foreground bg-background text-foreground",
               "shadow-[4px_4px_0px_0px_var(--foreground)]",
-              // Hover: fill invert
               "hover:bg-foreground hover:text-background",
-              // Active: remove shadow offset (pressed feel)
-              "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
+              "active:shadow-none active:translate-x-1 active:translate-y-1",
               "transition-all duration-100",
             ].join(" ")}
             whileTap={{ scale: 0.98 }}
