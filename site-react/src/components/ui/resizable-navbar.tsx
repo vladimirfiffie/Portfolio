@@ -8,7 +8,6 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import React, { useState } from "react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 /* ============================= */
 /* TYPES                         */
@@ -184,12 +183,7 @@ export const MobileNavHeader = ({
   className,
 }: MobileNavHeaderProps) => {
   return (
-    <div
-      className={cn(
-        "flex w-full flex-row items-center justify-between",
-        className
-      )}
-    >
+    <div className={cn("flex w-full flex-row items-center justify-between", className)}>
       {children}
     </div>
   );
@@ -296,5 +290,3 @@ export const NavbarLogo = () => (
     </motion.span>
   </a>
 );
-
-export { ThemeToggle };

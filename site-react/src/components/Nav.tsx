@@ -8,8 +8,8 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
-  ThemeToggle,
 } from "@/components/ui/resizable-navbar";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useState } from "react";
 
 const navItems = [
@@ -28,7 +28,7 @@ export default function Nav() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
-        {/* Thin separator before toggle */}
+        {/* Hairline divider keeps toggle visually separated */}
         <span className="w-px h-4 bg-border mx-1 shrink-0" aria-hidden />
         <ThemeToggle />
       </NavBody>
