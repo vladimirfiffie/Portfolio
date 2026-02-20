@@ -45,7 +45,7 @@ export const BentoGridItem = ({
       <div className="flex flex-1 w-full h-full min-h-24">{header}</div>
 
       <div className="transition duration-300 group-hover/bento:translate-x-1">
-        {/* Icon is now primary-colored by default */}
+        {/* Icon is primary-colored by default */}
         <div className="text-primary">{icon}</div>
 
         <div className="mt-2 mb-1 font-sans font-black text-foreground uppercase tracking-tighter text-lg leading-none">

@@ -7,7 +7,8 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 /* ============================= */
 /* TYPES                         */
@@ -81,33 +82,22 @@ export const Navbar = ({ children, className }: NavbarProps) => {
 
 /* ============================= */
 /* NAV BODY                      */
-/* Always a centered pill.       */
-/* Transparent at top,           */
-/* frosted when scrolled.        */
 /* ============================= */
 
 export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       initial={false}
-      animate={{
-        y: visible ? 16 : 8,
-        // Slightly shrink width when transparent to hint at pill shape
-        width: visible ? "auto" : "auto",
-      }}
+      animate={{ y: visible ? 16 : 8 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       style={{
-        // Always frosted pill shape — transparent bg at top, filled when scrolled
         backgroundColor: visible
           ? "color-mix(in oklch, var(--foreground) 8%, var(--background) 65%)"
           : "transparent",
-        // Border fades in/out via opacity on the element
       }}
       className={cn(
-        // Always pill, always centered, always same layout
-        "relative z-[60] hidden lg:flex flex-row items-center gap-2 pointer-events-auto",
-        "rounded-full px-4 py-2",
-        // Border + blur only when scrolled — but we keep border transparent at top to avoid jump
+        "relative z-60 hidden lg:flex flex-row items-center gap-2 pointer-events-auto",
+        "rounded-full px-5 py-2.5",
         visible
           ? "border border-border backdrop-blur-md backdrop-saturate-150 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
           : "border border-transparent",
@@ -137,12 +127,11 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           href={item.link}
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-3 py-1.5 text-[11px] font-black uppercase tracking-widest text-muted-foreground transition-colors duration-150 hover:text-background"
+          className="relative px-3.5 py-1.5 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors duration-150 hover:text-background"
         >
           {hovered === idx && (
             <motion.div
               layoutId="nav-hover-bg"
-              // Solid foreground color for hover — black in light, white in dark
               className="absolute inset-0 rounded-full bg-foreground"
               transition={{ type: "spring", bounce: 0.15, duration: 0.25 }}
             />
@@ -174,7 +163,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       }}
       className={cn(
         "relative z-50 flex flex-col pointer-events-auto lg:hidden",
-        "rounded-full px-4 py-2",
+        "rounded-full px-4 py-2.5",
         visible
           ? "border border-border backdrop-blur-md backdrop-saturate-150 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
           : "border border-transparent",
@@ -228,7 +217,6 @@ export const MobileNavMenu = ({
             backgroundColor:
               "color-mix(in oklch, var(--foreground) 4%, var(--background) 92%)",
             overflow: "hidden",
-            // Pill shape continues below header
             borderRadius: "0 0 1.5rem 1.5rem",
           }}
           className={cn(
@@ -308,3 +296,5 @@ export const NavbarLogo = () => (
     </motion.span>
   </a>
 );
+
+export { ThemeToggle };

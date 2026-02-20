@@ -34,31 +34,17 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    /*
-     * DO NOT put overflow-x: hidden here.
-     * Any overflow:hidden on an ancestor of a backdrop-filter element
-     * creates a new stacking context that silently disables the blur.
-     * Move horizontal overflow clamping to #root only.
-     */
+
 }
 
 body {
-    /*
-     * Same — no overflow-x: hidden on body.
-     * backdrop-filter: blur() requires the element NOT be clipped
-     * by an overflow:hidden ancestor anywhere in the tree.
-     */
+
     min-height: 100%;
 }
 
 #root {
-    /*
-     * Contain horizontal overflow here instead — #root is not an
-     * ancestor of the fixed navbar (fixed elements escape normal flow),
-     * so this is safe and won't kill backdrop-filter.
-     */
+
     overflow-x: clip;
-    /* `clip` instead of `hidden` — does NOT create stacking context */
     min-height: 100%;
 }
 
