@@ -3,8 +3,15 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
+(function () {
+  const saved = localStorage.getItem("theme") ?? "system";
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const shouldBeDark =
+    saved === "dark" || (saved === "system" && prefersDark);
+  document.documentElement.classList.toggle("dark", shouldBeDark);
+})();
+
 function RootWrapper() {
-  // Scroll to top on initial load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
