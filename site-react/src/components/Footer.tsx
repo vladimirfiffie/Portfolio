@@ -20,7 +20,7 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
 
-        {/* ── Main row ─────────────────────────────────────── */}
+        {/* ── Main row ── */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-8 md:gap-10">
 
           {/* Left — Identity */}
@@ -90,7 +90,7 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* ── Bottom bar ───────────────────────────────────── */}
+        {/* ── Bottom bar ── */}
         <div className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <p className="text-foreground text-[10px] uppercase tracking-[0.2em] font-black text-center sm:text-left">
             © {currentYear} Vladimir Fiffie Jr<span className="text-primary">.</span>

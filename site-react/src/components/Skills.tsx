@@ -10,7 +10,7 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 
-/* ── Skeletons ──────────────────────────────────────────────── */
+/* ── Skeletons ── */
 
 // 1. Frontend — animated code bars
 const SkeletonOne = () => (
@@ -115,7 +115,7 @@ const SkeletonFive = () => (
   </div>
 );
 
-/* ── Skill items config ─────────────────────────────────────── */
+/* ── Skill items config ── */
 const skillItems = [
   {
     title: "Frontend",
@@ -154,7 +154,7 @@ const skillItems = [
   },
 ];
 
-/* ── Skills section ─────────────────────────────────────────── */
+/* ── Skills section ── */
 export default function Skills() {
   return (
     <div className="mt-8 sm:mt-12 px-4 md:px-0">

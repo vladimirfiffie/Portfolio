@@ -2,7 +2,7 @@
 import { Timeline } from "@/components/ui/timeline";
 import { motion } from "framer-motion";
 
-/* ── Project card ───────────────────────────────────────────── */
+/* ── Project card ── */
 function ProjectCard({ title }: { title: string }) {
   return (
     <motion.div
@@ -14,11 +14,7 @@ function ProjectCard({ title }: { title: string }) {
         hover: { backgroundColor: "var(--primary)" },
       }}
       transition={{ duration: 0.18 }}
-      /*
-       * Height scales with breakpoint so cards feel proportional
-       * on every screen size — small phones get h-16, tablets h-32,
-       * desktop gets h-44 / h-56.
-       */
+
       className="h-16 sm:h-28 md:h-44 lg:h-56 border-r border-b border-border flex items-center justify-center relative overflow-hidden"
     >
       <motion.span
@@ -39,7 +35,7 @@ function ProjectCard({ title }: { title: string }) {
   );
 }
 
-/* ── Timeline data ──────────────────────────────────────────── */
+/* ── Timeline data ── */
 export function TimelineDemo() {
   const data = [
     {

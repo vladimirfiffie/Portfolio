@@ -39,15 +39,10 @@ export function BackgroundBeamsDemo() {
       id="contact"
       className="w-full bg-background relative flex flex-col items-center justify-center antialiased overflow-hidden min-h-128 sm:min-h-152 md:min-h-168 py-16 sm:py-20 md:py-28"
     >
-      {/* Changed max-w-4xl to max-w-7xl.
-        A larger container prevents the "Connect with me" text from wrapping on desktop.
-      */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center w-full">
 
-        {/* Heading:
-          - Added md:whitespace-nowrap to keep it on one line for desktop.
-          - Adjusted clamp to scale perfectly with viewport width.
-        */}
+
         <h1
           className="relative z-10 text-foreground text-center font-black tracking-tighter uppercase leading-none md:whitespace-nowrap"
           style={{ fontSize: "clamp(2.2rem, 8.5vw, 7rem)" }}
@@ -55,9 +50,6 @@ export function BackgroundBeamsDemo() {
           Connect with me<span className="text-primary">.</span>
         </h1>
 
-        {/* Subtext:
-          - Increased max-w to 2xl so the paragraph width balances with the wide heading.
-        */}
         <p
           className="text-foreground/70 max-w-2xl mx-auto mt-6 sm:mt-8 text-center relative z-10 font-bold uppercase leading-relaxed"
           style={{

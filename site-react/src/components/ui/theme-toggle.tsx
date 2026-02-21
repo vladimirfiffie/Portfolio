@@ -21,11 +21,6 @@ export const ThemeToggle = () => {
     <motion.button
       whileTap={{ scale: 0.9 }}
       onClick={toggleTheme}
-      /*
-       * Sized to match the navbar pill height (py-2.5 = ~10px top+bottom).
-       * h-7 w-7 keeps it compact without looking tiny next to nav links.
-       * hover:bg-foreground / hover:text-background matches nav link hover.
-       */
       className="relative flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground hover:bg-foreground hover:text-background transition-colors duration-150"
       aria-label="Toggle theme"
     >

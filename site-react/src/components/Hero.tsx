@@ -37,7 +37,7 @@ const MouseIndicator = () => {
   );
 };
 
-/* ── Mobile: swipe-up indicator ────────────────────────────── */
+/* ── Mobile: swipe-up indicator ── */
 const SwipeIndicator = () => {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
@@ -93,23 +93,13 @@ const SwipeIndicator = () => {
   );
 };
 
-/* ── Hero ───────────────────────────────────────────────────── */
+/* ── Hero ── */
 const Hero = () => {
   return (
     <section className="w-full relative overflow-hidden bg-background border-b border-border">
       <div className="relative w-full min-h-svh flex flex-col items-center justify-center px-4 pt-24 pb-32 sm:pt-28 sm:pb-36 md:pt-32 md:pb-40">
 
-        {/* Spotlight */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-          <div className="absolute -top-32 -left-8 sm:-top-20 sm:left-20 md:left-60 md:-top-20">
-          </div>
-        </div>
-
-        {/* ── Heading ───────────────────────────────────────────
-         *  clamp(min, preferred-vw, max)
-         *  Scales fluidly from ~320px (2.4rem) to 1280px+ (8rem).
-         *  No breakpoint jumps, no overflow on small phones.
-         * ──────────────────────────────────────────────────── */}
+        {/* ── Heading ── */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -121,10 +111,7 @@ const Hero = () => {
           <span className="text-primary">.</span>
         </motion.h1>
 
-        {/* ── Subtitle ──────────────────────────────────────────
-         *  Wraps freely — no whitespace-nowrap or overflow issues.
-         *  Letter spacing also fluid so it never feels cramped.
-         * ──────────────────────────────────────────────────── */}
+        {/* ── Subtitle ── */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -138,9 +125,7 @@ const Hero = () => {
           Creative IT Graduate building functional &amp; digital experiences.
         </motion.p>
 
-        {/* ── CTA ───────────────────────────────────────────────
-         *  Slightly tighter on mobile, full size on sm+
-         * ──────────────────────────────────────────────────── */}
+        {/* ── CTA ── */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

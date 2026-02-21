@@ -11,8 +11,6 @@ import React, { useState } from "react";
 
 /* ============================= */
 /* SCROLL HELPER                 */
-/* Exported so Nav.tsx can use   */
-/* the same logic everywhere.    */
 /* ============================= */
 
 export function scrollToSection(href: string, onDone?: () => void) {
@@ -116,7 +114,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
           : "transparent",
       }}
       className={cn(
-        "relative z-[60] hidden lg:flex flex-row items-center gap-2 pointer-events-auto",
+        "relative z-60 hidden lg:flex flex-row items-center gap-2 pointer-events-auto",
         "rounded-full px-5 py-2.5",
         visible
           ? "border border-border backdrop-blur-md backdrop-saturate-150 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
