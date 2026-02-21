@@ -30,40 +30,58 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   return (
     <div
       id="journey"
-      className="w-full bg-background font-sans md:px-10 border-t border-border"
+      className="w-full bg-background"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10 text-center flex flex-col items-center">
-        {/* Header matched to Hero/About font */}
-        <h2 className="text-5xl md:text-7xl lg:text-9xl mb-6 text-foreground font-black uppercase tracking-tighter leading-none">
+      {/* ── Section header ── */}
+      <div className="max-w-7xl mx-auto py-12 sm:py-16 md:py-20 px-4 md:px-8 lg:px-10 text-center flex flex-col items-center">
+        <h2
+          className="mb-4 sm:mb-6 text-foreground font-black uppercase tracking-tighter leading-none"
+          style={{ fontSize: "clamp(2.4rem, 9vw, 7rem)" }}
+        >
           My Journey<span className="text-primary">.</span>
         </h2>
-
-        <p className="text-foreground text-sm md:text-base max-w-2xl font-bold uppercase tracking-tight">
+        <p
+          className="text-foreground/70 max-w-2xl font-bold uppercase leading-relaxed"
+          style={{
+            fontSize: "clamp(0.6rem, 1.8vw, 0.9rem)",
+            letterSpacing: "clamp(0.05em, 0.3vw, 0.15em)",
+          }}
+        >
           From building my first projects to creating engaging digital
           experiences. Here&apos;s a timeline of my growth as a developer.
         </p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+      {/* ── Timeline entries ── */}
+      <div ref={ref} className="relative max-w-7xl mx-auto pb-16 sm:pb-20 px-4 md:px-8 lg:px-10">
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
+            className="flex justify-start pt-8 sm:pt-12 md:pt-40 md:gap-10"
           >
-            {/* STICKY YEAR CONTAINER */}
-            <div className="sticky top-40 flex flex-col md:flex-row z-40 items-center self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 bg-background flex items-center justify-center border border-border">
-                <div className="h-3 w-3 bg-primary" />
+            {/* Sticky year label + dot (desktop) */}
+            <div className="sticky top-40 flex flex-col md:flex-row z-40 items-center self-start max-w-xs lg:max-w-sm md:w-full shrink-0">
+              {/* Dot */}
+              <div className="h-8 w-8 md:h-10 md:w-10 absolute left-0 md:left-3 bg-background flex items-center justify-center border border-border shrink-0">
+                <div className="h-2.5 w-2.5 md:h-3 md:w-3 bg-primary" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-7xl font-black text-foreground uppercase tracking-tighter opacity-20">
+              {/* Year — hidden on mobile, shown md+ */}
+              <h3
+                className="hidden md:block md:pl-20 font-black text-foreground uppercase tracking-tighter opacity-20 leading-none"
+                style={{ fontSize: "clamp(2rem, 5vw, 5rem)" }}
+              >
                 {item.title}
               </h3>
             </div>
 
-            {/* CONTENT SECTION */}
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-3xl mb-4 text-left font-black text-foreground uppercase tracking-tighter">
+            {/* Content */}
+            <div className="relative pl-10 sm:pl-14 md:pl-4 w-full min-w-0">
+              {/* Year — shown on mobile only */}
+              <h3
+                className="md:hidden block mb-4 text-left font-black text-foreground uppercase tracking-tighter leading-none"
+                style={{ fontSize: "clamp(1.6rem, 7vw, 2.5rem)" }}
+              >
                 {item.title}
               </h3>
               {item.content}
@@ -71,16 +89,13 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           </div>
         ))}
 
-        {/* TRACKING LINE - Stripped of soft gradients */}
+        {/* Animated line */}
         <div
           style={{ height: height + "px" }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-0.5 bg-border/20"
+          className="absolute left-4 md:left-10 top-0 overflow-hidden w-0.5 bg-border/20"
         >
           <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
+            style={{ height: heightTransform, opacity: opacityTransform }}
             className="absolute inset-x-0 top-0 w-0.5 bg-primary"
           />
         </div>

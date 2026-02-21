@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { BackgroundBeams } from "./background-beams";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export function BackgroundBeamsDemo() {
   const [copied, setCopied] = useState(false);
@@ -23,35 +23,56 @@ export function BackgroundBeamsDemo() {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/vladimir-fiffie/" },
   ];
 
+  const sharedClass = [
+    "relative inline-flex items-center justify-center",
+    "px-6 py-2.5 sm:px-8 sm:py-3",
+    "cursor-pointer border-2 border-foreground bg-background text-foreground",
+    "shadow-[4px_4px_0px_0px_var(--foreground)]",
+    "hover:bg-foreground hover:text-background",
+    "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
+    "transition-all duration-100",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  ].join(" ");
+
   return (
     <div
       id="contact"
-      className="h-160 w-full bg-background relative flex flex-col items-center justify-center antialiased overflow-hidden"
+      className="w-full bg-background relative flex flex-col items-center justify-center antialiased overflow-hidden min-h-128 sm:min-h-152 md:min-h-168 py-16 sm:py-20 md:py-28"
     >
-      <div className="max-w-4xl mx-auto p-4 relative z-10">
-        <h1 className="relative z-10 text-5xl md:text-8xl text-foreground text-center font-black tracking-tighter uppercase leading-none whitespace-nowrap">
-          CONNECT WITH ME<span className="text-primary">.</span>
+      {/* Changed max-w-4xl to max-w-7xl.
+        A larger container prevents the "Connect with me" text from wrapping on desktop.
+      */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center w-full">
+
+        {/* Heading:
+          - Added md:whitespace-nowrap to keep it on one line for desktop.
+          - Adjusted clamp to scale perfectly with viewport width.
+        */}
+        <h1
+          className="relative z-10 text-foreground text-center font-black tracking-tighter uppercase leading-none md:whitespace-nowrap"
+          style={{ fontSize: "clamp(2.2rem, 8.5vw, 7rem)" }}
+        >
+          Connect with me<span className="text-primary">.</span>
         </h1>
 
-        <p className="text-foreground max-w-lg mx-auto my-8 text-sm md:text-base text-center relative z-10 font-black uppercase tracking-tight">
+        {/* Subtext:
+          - Increased max-w to 2xl so the paragraph width balances with the wide heading.
+        */}
+        <p
+          className="text-foreground/70 max-w-2xl mx-auto mt-6 sm:mt-8 text-center relative z-10 font-bold uppercase leading-relaxed"
+          style={{
+            fontSize: "clamp(0.7rem, 1.6vw, 1rem)",
+            letterSpacing: "0.15em",
+          }}
+        >
           I&apos;m always interested in hearing about new projects and creative
           opportunities. Let&apos;s collaborate and create something amazing
           together.
         </p>
 
-        <div className="flex justify-center gap-6 mt-8 relative z-10 flex-wrap">
+        {/* CTA buttons */}
+        <div className="flex justify-center gap-3 sm:gap-4 md:gap-6 mt-10 sm:mt-12 relative z-10 flex-wrap">
           {links.map((link) => {
-
-            const sharedClass = [
-              "relative inline-flex items-center justify-center px-8 py-3 cursor-pointer",
-              "border-2 border-foreground bg-background text-foreground",
-              "shadow-[4px_4px_0px_0px_var(--foreground)]",
-              "hover:bg-foreground hover:text-background",
-              "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
-              "transition-all duration-100",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-            ].join(" ");
-
             if (link.href) {
               return (
                 <motion.a
@@ -68,7 +89,6 @@ export function BackgroundBeamsDemo() {
                 </motion.a>
               );
             }
-
             return (
               <motion.button
                 key={link.label}

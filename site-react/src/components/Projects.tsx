@@ -1,5 +1,4 @@
 "use client";
-
 import { FocusCards, CardType } from "@/components/ui/focus-cards";
 
 export default function Projects() {
@@ -36,27 +35,35 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full relative overflow-hidden py-20 md:py-32 bg-background"
+      className="w-full relative overflow-hidden py-14 sm:py-20 md:py-32 bg-background"
       aria-label="Featured projects"
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        {/* Main Projects Heading */}
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-center mb-16 text-foreground tracking-tighter">
-          FEATURED PROJECTS<span className="text-primary">.</span>
+        {/* ── Featured heading ── */}
+        <h2
+          className="font-black text-center mb-10 sm:mb-14 md:mb-16 text-foreground tracking-tighter leading-none uppercase"
+          style={{ fontSize: "clamp(1.8rem, 7vw, 5rem)" }}
+        >
+          Featured Projects<span className="text-primary">.</span>
         </h2>
+      </div>
 
-        <FocusCards cards={cards} />
+      <FocusCards cards={cards} />
 
-        {/* In Progress Section */}
-        <div className="mt-40">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-center mb-12 text-foreground tracking-tighter">
-            BUILDING NOW<span className="text-primary">...</span>
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
+        {/* ── In Progress ── */}
+        <div className="mt-20 sm:mt-28 md:mt-40">
+          <h2
+            className="font-black text-center mb-8 sm:mb-10 md:mb-12 text-foreground tracking-tighter leading-none uppercase"
+            style={{ fontSize: "clamp(1.6rem, 6vw, 4rem)" }}
+          >
+            Building Now<span className="text-primary">...</span>
           </h2>
-
-          <div className="max-w-3xl mx-auto">
-            <FocusCards cards={inProgressCards} />
-          </div>
         </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-4 md:px-8">
+        <FocusCards cards={inProgressCards} />
       </div>
     </section>
   );

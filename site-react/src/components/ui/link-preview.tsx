@@ -17,9 +17,9 @@ type LinkPreviewProps = {
   width?: number;
   height?: number;
 } & (
-  | { isStatic: true; imageSrc: string }
-  | { isStatic?: false; imageSrc?: never }
-);
+    | { isStatic: true; imageSrc: string }
+    | { isStatic?: false; imageSrc?: never }
+  );
 
 export const LinkPreview = ({
   children,
@@ -30,7 +30,8 @@ export const LinkPreview = ({
   isStatic = false,
   imageSrc = "",
 }: LinkPreviewProps) => {
-  let src;
+  let src: string;
+
   if (!isStatic) {
     const params = encode({
       url,
@@ -59,8 +60,8 @@ export const LinkPreview = ({
   const x = useMotionValue(0);
   const translateX = useSpring(x, springConfig);
 
-  const handleMouseMove = (event: any) => {
-    const targetRect = event.target.getBoundingClientRect();
+  const handleMouseMove = (event: React.MouseEvent) => {
+    const targetRect = (event.target as HTMLElement).getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
     const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2;
     x.set(offsetFromCenter);
@@ -69,17 +70,15 @@ export const LinkPreview = ({
   return (
     <>
       {isMounted ? (
-        <div className="hidden">
-          <img src={src} width={width} height={height} alt="hidden image" />
+        <div className="hidden" aria-hidden>
+          <img src={src} width={width} height={height} alt="" />
         </div>
       ) : null}
 
       <HoverCardPrimitive.Root
         openDelay={50}
         closeDelay={100}
-        onOpenChange={(open) => {
-          setOpen(open);
-        }}
+        onOpenChange={setOpen}
       >
         <HoverCardPrimitive.Trigger
           onMouseMove={handleMouseMove}
@@ -89,7 +88,9 @@ export const LinkPreview = ({
           )}
           asChild
         >
-          <a href={url}>{children}</a>
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {children}
+          </a>
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content
@@ -106,20 +107,16 @@ export const LinkPreview = ({
                   opacity: 1,
                   y: 0,
                   scale: 1,
-                  transition: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                  },
+                  transition: { type: "spring", stiffness: 260, damping: 20 },
                 }}
                 exit={{ opacity: 0, y: 20, scale: 0.6 }}
                 className="shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(255,255,255,0.08)] rounded-2xl"
-                style={{
-                  x: translateX,
-                }}
+                style={{ x: translateX }}
               >
                 <a
                   href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block p-1 bg-background border border-border rounded-2xl transition-all duration-300 hover:border-primary/50"
                   style={{ fontSize: 0 }}
                 >
@@ -128,7 +125,7 @@ export const LinkPreview = ({
                     width={width}
                     height={height}
                     className="rounded-xl object-cover"
-                    alt="preview image"
+                    alt="preview"
                   />
                 </a>
               </motion.div>

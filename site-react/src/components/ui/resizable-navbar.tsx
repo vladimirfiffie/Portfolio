@@ -10,6 +10,27 @@ import {
 import React, { useState } from "react";
 
 /* ============================= */
+/* SCROLL HELPER                 */
+/* Exported so Nav.tsx can use   */
+/* the same logic everywhere.    */
+/* ============================= */
+
+export function scrollToSection(href: string, onDone?: () => void) {
+  // Strip the leading #
+  const id = href.replace(/^#/, "");
+  const el = document.getElementById(id);
+  if (el) {
+    // Use scrollIntoView for reliability — respects scroll-padding-top in CSS
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    // Fallback: let the browser handle it (e.g. cross-page anchor)
+    window.location.href = href;
+  }
+  // Close menu AFTER initiating scroll so there's no race condition
+  onDone?.();
+}
+
+/* ============================= */
 /* TYPES                         */
 /* ============================= */
 
@@ -80,7 +101,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
 };
 
 /* ============================= */
-/* NAV BODY                      */
+/* NAV BODY — desktop pill       */
 /* ============================= */
 
 export const NavBody = ({ children, className, visible }: NavBodyProps) => {
@@ -95,7 +116,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
           : "transparent",
       }}
       className={cn(
-        "relative z-60 hidden lg:flex flex-row items-center gap-2 pointer-events-auto",
+        "relative z-[60] hidden lg:flex flex-row items-center gap-2 pointer-events-auto",
         "rounded-full px-5 py-2.5",
         visible
           ? "border border-border backdrop-blur-md backdrop-saturate-150 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
@@ -125,7 +146,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           key={item.name}
           href={item.link}
           onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
+          onClick={(e) => {
+            if (item.link.startsWith("#")) {
+              e.preventDefault();
+              scrollToSection(item.link, onItemClick);
+            } else {
+              onItemClick?.();
+            }
+          }}
           className="relative px-3.5 py-1.5 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors duration-150 hover:text-background"
         >
           {hovered === idx && (
@@ -183,7 +211,12 @@ export const MobileNavHeader = ({
   className,
 }: MobileNavHeaderProps) => {
   return (
-    <div className={cn("flex w-full flex-row items-center justify-between", className)}>
+    <div
+      className={cn(
+        "flex w-full flex-row items-center justify-between",
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -219,7 +252,11 @@ export const MobileNavMenu = ({
             className
           )}
         >
-          <button onClick={onClose} className="sr-only" aria-label="Close menu" />
+          <button
+            onClick={onClose}
+            className="sr-only"
+            aria-label="Close menu"
+          />
           <div className="w-full flex flex-col">{children}</div>
         </motion.div>
       )}
@@ -278,6 +315,10 @@ export const MobileNavToggle = ({
 export const NavbarLogo = () => (
   <a
     href="#"
+    onClick={(e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }}
     className="flex items-center text-sm font-black tracking-tighter uppercase text-foreground shrink-0 px-2"
   >
     <span>VF</span>

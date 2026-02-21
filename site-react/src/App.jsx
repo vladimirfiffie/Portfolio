@@ -13,7 +13,6 @@ import {
 import { useState } from "react";
 
 import Hero from "./components/Hero";
-import { Spotlight } from "./components/ui/spotlight-new";
 import About from "./components/About";
 import { TimelineDemo } from "./components/Timeline";
 import Projects from "./components/Projects";
@@ -68,7 +67,6 @@ export default function App() {
 
       <main>
         <section className="relative overflow-hidden">
-          <Spotlight />
           <Hero />
         </section>
 

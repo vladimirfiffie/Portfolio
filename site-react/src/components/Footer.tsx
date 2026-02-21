@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "motion/react";
 import { LinkPreview } from "@/components/ui/link-preview";
 
@@ -15,31 +14,36 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative w-full bg-background pt-24 pb-12 overflow-hidden border-t border-border">
-      {/* Top Border Line */}
+    <footer className="relative w-full bg-background pt-14 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 overflow-hidden border-t border-border">
+      {/* Top border line */}
       <div className="absolute top-0 left-0 w-full h-px bg-border" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10">
-          {/* Left: Identity */}
-          <div className="flex flex-col space-y-2 items-center md:items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-4xl font-black text-foreground tracking-tighter text-center md:text-left uppercase leading-none">
-                VLADIMIR<span className="text-primary">.</span>
-              </h2>
-              <p className="text-foreground text-[11px] uppercase tracking-[0.3em] font-black text-center md:text-left mt-2">
-                Creative IT Graduate
-              </p>
-            </motion.div>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
 
-          {/* Middle: Core Stack */}
+        {/* ── Main row ─────────────────────────────────────── */}
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-8 md:gap-10">
+
+          {/* Left — Identity */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center md:items-start space-y-1.5"
+          >
+            <h2
+              className="font-black text-foreground tracking-tighter text-center md:text-left uppercase leading-none"
+              style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}
+            >
+              Vladimir<span className="text-primary">.</span>
+            </h2>
+            <p className="text-foreground text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-black text-center md:text-left">
+              Creative IT Graduate
+            </p>
+          </motion.div>
+
+          {/* Center — Core stack (visible lg+, hidden below) */}
           <div className="hidden lg:flex items-center justify-center">
-            <div className="flex items-center gap-8 whitespace-nowrap">
+            <div className="flex items-center gap-6 xl:gap-8 whitespace-nowrap">
               {coreStack.map((tech) => (
                 <LinkPreview
                   key={tech.name}
@@ -52,39 +56,50 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right: Availability */}
+          {/* Mobile stack — wrapping pill list, shown below lg */}
+          <div className="flex lg:hidden flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            {coreStack.map((tech) => (
+              <a
+                key={tech.name}
+                href={tech.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/60 hover:text-primary transition-colors"
+              >
+                {tech.name}
+              </a>
+            ))}
+          </div>
+
+          {/* Right — Availability badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col items-center md:items-end space-y-4"
+            className="flex flex-col items-center md:items-end"
           >
-            <div className="flex items-center gap-3 px-6 py-3 border-2 border-primary bg-background shadow-[4px_4px_0px_0px_var(--primary)]">
-              <span className="relative flex h-2 w-2">
+            <div className="flex items-center gap-2.5 px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-primary bg-background shadow-[4px_4px_0px_0px_var(--primary)]">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-2 w-2 bg-primary" />
               </span>
-              <span className="text-primary text-[11px] font-black uppercase tracking-[0.2em]">
+              <span className="text-primary text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap">
                 Available for work
               </span>
             </div>
           </motion.div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-foreground text-[10px] uppercase tracking-[0.2em] font-black">
-              © {currentYear} Vladimir Fiffie Jr
-              <span className="text-primary">.</span>
-            </p>
-          </div>
-          <div className="text-center md:text-right">
-            <p className="text-foreground/40 text-[9px] uppercase tracking-[0.15em] font-bold">
-              Designed for the web 2026
-            </p>
-          </div>
+        {/* ── Bottom bar ───────────────────────────────────── */}
+        <div className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <p className="text-foreground text-[10px] uppercase tracking-[0.2em] font-black text-center sm:text-left">
+            © {currentYear} Vladimir Fiffie Jr<span className="text-primary">.</span>
+          </p>
+          <p className="text-foreground/40 text-[9px] uppercase tracking-[0.15em] font-bold text-center sm:text-right">
+            Designed for the web 2026
+          </p>
         </div>
+
       </div>
     </footer>
   );

@@ -1,5 +1,4 @@
 "use client";
-import { Spotlight } from "@/components/ui/spotlight-new";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 /* ── Desktop: mouse-wheel scroll indicator ─────────────────── */
@@ -103,7 +102,6 @@ const Hero = () => {
         {/* Spotlight */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="absolute -top-32 -left-8 sm:-top-20 sm:left-20 md:left-60 md:-top-20">
-            <Spotlight />
           </div>
         </div>
 

@@ -12,7 +12,10 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[20rem] md:grid-cols-3",
+        // Single column on mobile, 3-col on md+
+        // Row height is auto on mobile so content breathes naturally,
+        // fixed 20rem rows on md+ for the visual grid effect
+        "mx-auto grid max-w-7xl grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3 md:auto-rows-[18rem] lg:auto-rows-[20rem]",
         className,
       )}
     >
@@ -37,22 +40,28 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "group/bento row-span-1 flex flex-col justify-between space-y-4 rounded-3xl border border-border bg-secondary/30 p-4 transition-all duration-300 hover:bg-secondary/50 hover:border-primary/50",
+        "group/bento row-span-1 flex flex-col justify-between space-y-3 rounded-2xl md:rounded-3xl border border-border bg-secondary/30 p-3 sm:p-4 transition-all duration-300 hover:bg-secondary/50 hover:border-primary/50",
+        // On mobile, give a sensible min-height so skeleton animations are visible
+        "min-h-50 sm:min-h-60 md:min-h-0",
         className,
       )}
     >
-      {/* Header container for Skeleton animations */}
-      <div className="flex flex-1 w-full h-full min-h-24">{header}</div>
+      {/* Skeleton / header */}
+      <div className="flex flex-1 w-full h-full min-h-35 sm:min-h-35 md:min-h-0">
+        {header}
+      </div>
 
+      {/* Text block */}
       <div className="transition duration-300 group-hover/bento:translate-x-1">
-        {/* Icon is primary-colored by default */}
         <div className="text-primary">{icon}</div>
-
-        <div className="mt-2 mb-1 font-sans font-black text-foreground uppercase tracking-tighter text-lg leading-none">
+        <div className="mt-1.5 mb-0.5 font-sans font-black text-foreground uppercase tracking-tighter leading-none"
+          style={{ fontSize: "clamp(0.9rem, 1.8vw, 1.1rem)" }}
+        >
           {title}
         </div>
-
-        <div className="font-sans text-sm font-medium text-muted-foreground leading-relaxed">
+        <div className="font-sans font-medium text-muted-foreground leading-relaxed"
+          style={{ fontSize: "clamp(0.7rem, 1.4vw, 0.875rem)" }}
+        >
           {description}
         </div>
       </div>
