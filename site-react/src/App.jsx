@@ -30,7 +30,7 @@ export default function App() {
 
         <section
           id="contact"
-          className="relative overflow-hidden border-t border-border"
+          className="relative overflow-hidden"
         >
           <BackgroundBeamsDemo />
         </section>

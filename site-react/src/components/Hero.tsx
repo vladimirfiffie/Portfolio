@@ -96,7 +96,7 @@ const SwipeIndicator = () => {
 /* ── Hero ── */
 const Hero = () => {
   return (
-    <section className="w-full relative overflow-hidden bg-background border-b border-border">
+    <section className="w-full relative overflow-hidden bg-background">
       <div className="relative w-full min-h-svh flex flex-col items-center justify-center px-4 pt-24 pb-32 sm:pt-28 sm:pb-36 md:pt-32 md:pb-40">
 
         {/* ── Heading ── */}

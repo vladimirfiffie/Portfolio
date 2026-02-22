@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-screen relative overflow-hidden py-20 md:py-32 bg-background border-b border-border"
+      className="w-screen relative overflow-hidden py-20 md:py-32 bg-background"
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col items-center">
         <div className="max-w-4xl w-full text-center">

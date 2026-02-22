@@ -14,9 +14,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative w-full bg-background pt-14 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 overflow-hidden border-t border-border">
-      {/* Top border line */}
-      <div className="absolute top-0 left-0 w-full h-px bg-border" />
+    <footer className="relative w-full bg-background pt-14 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 overflow-hidden">
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
 
