@@ -7,13 +7,21 @@ export type CardType = {
   src: string;
   ctaLink?: string;
   aspect?: "portrait" | "landscape" | "square";
+  fit?: "cover" | "contain" | "fill";
 };
 
-export function FocusCards({ cards }: { cards: CardType[] }) {
+export function FocusCards({
+  cards,
+  defaultFit = "cover",
+}: {
+  cards: CardType[];
+  defaultFit?: NonNullable<CardType["fit"]>;
+}) {
   const [hovered, setHovered] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
+  const resolveFit = (card: CardType) => card.fit ?? defaultFit;
 
   const infiniteCards = cards.length >= 4 ? [...cards, ...cards] : cards;
 
@@ -58,7 +66,14 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
             <img
               src={card.src}
               alt={card.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className={cn(
+                "absolute inset-0 w-full h-full transition-transform duration-500 group-hover:scale-105",
+                resolveFit(card) === "contain"
+                  ? "object-contain"
+                  : resolveFit(card) === "fill"
+                    ? "object-fill"
+                    : "object-cover",
+              )}
               loading="lazy"
             />
             {/* Label always visible on mobile */}
@@ -110,7 +125,14 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
               <img
                 src={card.src}
                 alt={card.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                className={cn(
+                  "absolute inset-0 w-full h-full transition-transform duration-700 hover:scale-105",
+                  resolveFit(card) === "contain"
+                    ? "object-contain"
+                    : resolveFit(card) === "fill"
+                      ? "object-fill"
+                      : "object-cover",
+                )}
                 loading="lazy"
               />
               <div

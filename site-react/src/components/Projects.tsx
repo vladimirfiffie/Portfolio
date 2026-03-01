@@ -1,7 +1,22 @@
 "use client";
+import { useEffect, useState } from "react";
 import { FocusCards, CardType } from "@/components/ui/focus-cards";
 
 export default function Projects() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    const syncTheme = () => setIsDarkMode(html.classList.contains("dark"));
+    syncTheme();
+
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
+
   const cards: CardType[] = [
     {
       title: "View on GitHub",
@@ -17,7 +32,9 @@ export default function Projects() {
     },
     {
       title: "Visit Website",
-      src: "/images/smart-advisor-transparent.png",
+      src: isDarkMode
+        ? "/images/smart-advisor-DM.png"
+        : "/images/smart-advisor-LM.png",
       ctaLink: "https://smartadvisor.live/",
       aspect: "landscape",
     },
@@ -26,7 +43,7 @@ export default function Projects() {
   const inProgressCards: CardType[] = [
     {
       title: "View on GitHub",
-      src: "/images/Airflow-Logo.png",
+      src: "/images/airflow-logo.png",
       ctaLink: "https://github.com/vladimirfiffie/Airflow",
       aspect: "landscape",
     },
@@ -48,7 +65,7 @@ export default function Projects() {
         </h2>
       </div>
 
-      <FocusCards cards={cards} />
+      <FocusCards cards={cards} defaultFit="cover" />
 
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         {/* ── In Progress ── */}
@@ -63,7 +80,7 @@ export default function Projects() {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 md:px-8">
-        <FocusCards cards={inProgressCards} />
+        <FocusCards cards={inProgressCards} defaultFit="cover" />
       </div>
     </section>
   );
