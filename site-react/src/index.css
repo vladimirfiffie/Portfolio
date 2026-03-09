@@ -42,10 +42,8 @@ body {
     min-height: 100%;
 }
 
-#root {
-
+body {
     overflow-x: clip;
-    min-height: 100%;
 }
 
 :root {
