@@ -24,7 +24,8 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="space-y-6 text-lg md:text-xl text-foreground mb-16 leading-tight uppercase font-bold tracking-tight"
+            className="space-y-6 text-foreground mb-16 leading-tight uppercase font-bold tracking-tight"
+            style={{ fontSize: "clamp(0.85rem, 2.2vw, 1.25rem)" }}
           >
             <p>
               I&apos;m an Information Technology graduate with a passion for

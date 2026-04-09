@@ -98,7 +98,6 @@ const Hero = () => {
   return (
     <section className="w-full relative overflow-hidden bg-background">
       <div className="relative w-full min-h-svh flex flex-col items-center justify-center px-4 pt-24 pb-32 sm:pt-28 sm:pb-36 md:pt-32 md:pb-40">
-
         {/* ── Heading ── */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -133,7 +132,7 @@ const Hero = () => {
           className="relative z-10 mt-10 sm:mt-12"
         >
           <motion.a
-            href="/assets/resume.pdf"
+            href="/assets/Vladimir_Fiffie_Jr_IT_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-7 py-3 sm:px-10 sm:py-4 cursor-pointer border-2 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_var(--foreground)] hover:bg-foreground hover:text-background active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-100"

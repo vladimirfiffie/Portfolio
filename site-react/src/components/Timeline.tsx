@@ -1,39 +1,5 @@
 "use client";
 import { Timeline } from "@/components/ui/timeline";
-import { motion } from "framer-motion";
-
-/* ── Project card ── */
-function ProjectCard({ title }: { title: string }) {
-  return (
-    <motion.div
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
-      variants={{
-        rest: { backgroundColor: "var(--background)" },
-        hover: { backgroundColor: "var(--primary)" },
-      }}
-      transition={{ duration: 0.18 }}
-
-      className="h-16 sm:h-28 md:h-44 lg:h-56 border-r border-b border-border flex items-center justify-center relative overflow-hidden"
-    >
-      <motion.span
-        variants={{
-          rest: { color: "var(--foreground)", scale: 1 },
-          hover: { color: "var(--primary-foreground)", scale: 1.05 },
-        }}
-        transition={{ duration: 0.18 }}
-        /*
-         * Fluid font so the label never overflows the card at any size.
-         */
-        className="font-black uppercase text-center px-2 leading-tight"
-        style={{ fontSize: "clamp(0.55rem, 1.4vw, 0.85rem)", letterSpacing: "0.05em" }}
-      >
-        {title}
-      </motion.span>
-    </motion.div>
-  );
-}
 
 /* ── Timeline data ── */
 export function TimelineDemo() {
@@ -56,11 +22,23 @@ export function TimelineDemo() {
             </span>
             , a booking platform where I designed the web UI.
           </p>
-          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
-            <ProjectCard title="Pao'er Ship" />
-            <ProjectCard title="Lion's Den Cinema" />
-            <ProjectCard title="React & TypeScript" />
-            <ProjectCard title="Full Stack Dev" />
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div className="overflow-hidden rounded-lg border border-border">
+              <img
+                src="/images/paoer-ship.jpg"
+                alt="Pao'er Ship"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="overflow-hidden rounded-lg border border-border">
+              <img
+                src="/images/lion-den-cinema.png"
+                alt="Lion's Den Cinema"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       ),
@@ -76,11 +54,13 @@ export function TimelineDemo() {
             Graduated and focused on building skills in React, animations, and
             full-stack development.
           </p>
-          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
-            <ProjectCard title="Portfolio" />
-            <ProjectCard title="Framer Motion" />
-            <ProjectCard title="Learning Projects" />
-            <ProjectCard title="Continuous Learning" />
+          <div className="overflow-hidden rounded-lg border border-border mb-6 sm:mb-8">
+            <img
+              src="/images/placeholder-2025.png"
+              alt="2025 projects"
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       ),
@@ -93,18 +73,24 @@ export function TimelineDemo() {
             className="mb-6 sm:mb-8 font-bold uppercase tracking-tight text-foreground leading-relaxed"
             style={{ fontSize: "clamp(0.7rem, 2vw, 1.1rem)" }}
           >
-            Portfolio launched. Currently building{" "}
+            Portfolio launched. Designed and built the frontend for{" "}
+            <span className="text-primary underline decoration-2 underline-offset-4">
+              Smart Advisor
+            </span>
+            , an AI-powered recommendation platform. Currently building{" "}
             <span className="text-primary underline decoration-2 underline-offset-4">
               Airflow
             </span>
             , a flight SaaS, with a focus on scalable React applications and
             high-performance UX design.
           </p>
-          <div className="grid grid-cols-2 gap-0 border-l border-t border-border">
-            <ProjectCard title="Portfolio" />
-            <ProjectCard title="Airflow (In Progress)" />
-            <ProjectCard title="Framer Motion" />
-            <ProjectCard title="Continuous Learning" />
+          <div className="overflow-hidden rounded-lg border border-border mb-6 sm:mb-8">
+            <img
+              src="/images/smart-advisor-screenshot.png"
+              alt="Smart Advisor screenshot"
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       ),

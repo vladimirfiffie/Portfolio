@@ -33,8 +33,8 @@ export default function Projects() {
     {
       title: "Visit Website",
       src: isDarkMode
-        ? "/images/smart-advisor-DM.png"
-        : "/images/smart-advisor-LM.png",
+        ? "/images/SmartAdvisor-DM.svg"
+        : "/images/SmartAdvisor-LM.svg",
       ctaLink: "https://smartadvisor.live/",
       aspect: "landscape",
     },
