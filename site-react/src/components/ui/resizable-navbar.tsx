@@ -7,7 +7,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 /* ============================= */
 /* SCROLL HELPER                 */
@@ -132,18 +132,53 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 /* ============================= */
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
-  const [hovered, setHovered] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [hoverStyle, setHoverStyle] = useState<{
+    left: number;
+    width: number;
+  } | null>(null);
+
+  const handleHover = (idx: number) => {
+    const el = itemRefs.current[idx];
+    const container = containerRef.current;
+    if (!el || !container) return;
+    const containerRect = container.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    setHoverStyle({
+      left: elRect.left - containerRect.left,
+      width: elRect.width,
+    });
+  };
 
   return (
     <div
-      onMouseLeave={() => setHovered(null)}
-      className={cn("flex items-center gap-0.5", className)}
+      ref={containerRef}
+      onMouseLeave={() => setHoverStyle(null)}
+      className={cn("relative flex items-center gap-0.5", className)}
     >
+      <AnimatePresence>
+        {hoverStyle && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              left: hoverStyle.left,
+              width: hoverStyle.width,
+            }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "spring", bounce: 0.15, duration: 0.25 }}
+            className="absolute top-0 bottom-0 rounded-full bg-foreground"
+            style={{ pointerEvents: "none" }}
+          />
+        )}
+      </AnimatePresence>
       {items.map((item, idx) => (
         <a
           key={item.name}
+          ref={(el) => { itemRefs.current[idx] = el; }}
           href={item.link}
-          onMouseEnter={() => setHovered(idx)}
+          onMouseEnter={() => handleHover(idx)}
           onClick={(e) => {
             if (item.link.startsWith("#")) {
               e.preventDefault();
@@ -154,13 +189,6 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           }}
           className="relative px-3.5 py-1.5 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors duration-150 hover:text-background"
         >
-          {hovered === idx && (
-            <motion.div
-              layoutId="nav-hover-bg"
-              className="absolute inset-0 rounded-full bg-foreground"
-              transition={{ type: "spring", bounce: 0.15, duration: 0.25 }}
-            />
-          )}
           <span className="relative z-10">{item.name}</span>
         </a>
       ))}

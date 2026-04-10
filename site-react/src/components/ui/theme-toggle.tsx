@@ -63,7 +63,7 @@ const bounceVariants = {
 };
 
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState<Theme>("system");
+  const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
     const saved = (localStorage.getItem("theme") ?? "system") as Theme;
@@ -81,11 +81,16 @@ export const ThemeToggle = () => {
   }, [theme]);
 
   const cycleTheme = () => {
+    if (!theme) return;
     const next = CYCLE[(CYCLE.indexOf(theme) + 1) % CYCLE.length];
     setTheme(next);
     localStorage.setItem("theme", next);
     applyTheme(next);
   };
+
+  if (!theme) {
+    return <div className="h-8 w-8" />;
+  }
 
   const { icon: Icon, label, color, glow } = ICONS[theme];
 
