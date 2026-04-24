@@ -103,10 +103,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative z-10 w-full max-w-6xl text-center font-black text-foreground leading-[0.9] tracking-tighter uppercase"
-          style={{ fontSize: "clamp(2.2rem, 9.5vw, 8rem)" }}
+          className="relative z-10 w-full text-center font-black text-foreground leading-[0.9] tracking-tighter uppercase whitespace-nowrap"
+          style={{ fontSize: "clamp(1.2rem, 6vw, 6.5rem)" }}
         >
-          Hi, I&apos;m Vladimir
+          Hi, I&apos;m Vladimir Fiffie Jr
           <span className="text-primary">.</span>
         </motion.h1>
 

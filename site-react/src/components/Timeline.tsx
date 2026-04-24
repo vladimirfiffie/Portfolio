@@ -23,19 +23,19 @@ export function TimelineDemo() {
             , a booking platform where I designed the web UI.
           </p>
           <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
-            <div className="overflow-hidden rounded-lg border border-border">
+            <div className="overflow-hidden rounded-lg border border-border aspect-[3/2]">
               <img
                 src="/images/paoer-ship.jpg"
                 alt="Pao'er Ship"
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
-            <div className="overflow-hidden rounded-lg border border-border">
+            <div className="overflow-hidden rounded-lg border border-border aspect-[3/2]">
               <img
                 src="/images/lion-den-cinema.png"
                 alt="Lion's Den Cinema"
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
@@ -54,14 +54,6 @@ export function TimelineDemo() {
             Graduated and focused on building skills in React, animations, and
             full-stack development.
           </p>
-          <div className="overflow-hidden rounded-lg border border-border mb-6 sm:mb-8">
-            <img
-              src="/images/placeholder-2025.png"
-              alt="2025 projects"
-              className="w-full h-auto object-cover"
-              loading="lazy"
-            />
-          </div>
         </div>
       ),
     },
