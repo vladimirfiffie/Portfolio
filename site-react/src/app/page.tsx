@@ -3,7 +3,6 @@
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import { TimelineDemo } from "../components/Timeline";
 import Projects from "../components/Projects";
 import { BackgroundBeamsDemo } from "../components/ui/background-beams-demo";
 import Footer from "../components/Footer";
@@ -19,10 +18,6 @@ export default function Home() {
         </section>
 
         <About />
-
-        <section id="journey" className="bg-background">
-          <TimelineDemo />
-        </section>
 
         <section id="projects">
           <Projects />

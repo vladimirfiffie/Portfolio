@@ -1,19 +1,61 @@
-"use client";
-
-import { useEffect } from "react";
+import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import Script from "next/script";
+import ScrollToTop from "@/components/ui/scroll-to-top";
 import "../index.css";
+
+/*
+ * Server component on purpose: Next only reads `export const metadata` from
+ * server components, so the "use client" directive that used to be here made
+ * SEO tags impossible. The one client-side effect now lives in <ScrollToTop />.
+ */
+
+const SITE_URL = "https://vladimirfiffie.com";
+const TITLE = "Vladimir Fiffie Jr — Creative IT Graduate";
+const DESCRIPTION =
+  "Information Technology graduate building functional and thoughtfully designed digital experiences. Selected work in React, Next.js, TypeScript and full-stack development.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s — Vladimir Fiffie Jr",
+  },
+  description: DESCRIPTION,
+  keywords: [
+    "Vladimir Fiffie",
+    "frontend developer",
+    "React developer",
+    "Next.js",
+    "TypeScript",
+    "portfolio",
+    "Information Technology",
+  ],
+  authors: [{ name: "Vladimir Fiffie Jr" }],
+  creator: "Vladimir Fiffie Jr",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: "Vladimir Fiffie Jr",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -31,12 +73,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <ScrollToTop />
         {children}
         <Analytics />
-        <Script
-          src="https://code.iconify.design/1/1.0.7/iconify.min.js"
-          strategy="lazyOnload"
-        />
       </body>
     </html>
   );

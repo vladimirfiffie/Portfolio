@@ -36,7 +36,7 @@ const Footer = () => {
               Vladimir<span className="text-primary">.</span>
             </h2>
             <div className="flex items-center gap-3">
-              <p className="text-foreground text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-black text-center md:text-left">
+              <p className="text-foreground text-[11px] sm:text-xs uppercase tracking-[0.16em] font-black text-center md:text-left">
                 Creative IT Graduate
               </p>
               <a
@@ -71,7 +71,7 @@ const Footer = () => {
                 <LinkPreview
                   key={tech.name}
                   url={tech.url}
-                  className="inline-block text-foreground text-[10px] font-black uppercase tracking-[0.2em] transition-colors border-b border-primary/0 hover:border-primary hover:text-primary"
+                  className="inline-block text-foreground text-[11px] font-black uppercase tracking-[0.12em] transition-colors border-b border-primary/0 hover:border-primary hover:text-primary"
                 >
                   {tech.name}
                 </LinkPreview>
@@ -106,7 +106,7 @@ const Footer = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-2 w-2 bg-primary" />
               </span>
-              <span className="text-primary text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap">
+              <span className="text-primary text-[11px] sm:text-xs font-black uppercase tracking-[0.14em] whitespace-nowrap">
                 Available for work
               </span>
             </div>
@@ -115,7 +115,7 @@ const Footer = () => {
 
         {/* ── Bottom bar ── */}
         <div className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-          <p className="text-foreground text-[10px] uppercase tracking-[0.2em] font-black text-center sm:text-left">
+          <p className="text-foreground text-[11px] uppercase tracking-[0.14em] font-black text-center sm:text-left">
             © {currentYear} Vladimir Fiffie Jr<span className="text-primary">.</span>
           </p>
           <p className="text-foreground/40 text-[9px] uppercase tracking-[0.15em] font-bold text-center sm:text-right">

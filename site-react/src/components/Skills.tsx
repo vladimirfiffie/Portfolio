@@ -1,186 +1,158 @@
 "use client";
-import { cn } from "@/lib/utils";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import {
-  IconBrandJavascript,
-  IconBrandTailwind,
-  IconBrandFigma,
-  IconBrandNodejs,
-  IconBrandGithub,
-} from "@tabler/icons-react";
 import { motion } from "motion/react";
+import type { IconType } from "react-icons";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiFramer,
+  SiFigma,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiDocker,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiVite,
+  SiJest,
+  SiLighthouse,
+  SiFlutter,
+} from "react-icons/si";
 
-/* ── Skeletons ── */
+/**
+ * `color` is the official brand color, revealed on hover.
+ * Brands whose mark is pure black use the foreground token instead, so they
+ * stay visible in dark mode rather than disappearing into the background.
+ */
+type Tech = { name: string; Icon: IconType; color: string };
 
-// 1. Frontend — animated code bars
-const SkeletonOne = () => (
-  <motion.div
-    initial="initial"
-    whileHover="animate"
-    className="flex flex-1 w-full h-full min-h- bg-dot-black/[0.08] dark:bg-dot-white/[0.08] flex-col justify-center space-y-2 rounded-lg p-3 sm:p-4 font-mono"
-  >
-    {[40, 70, 50].map((width, i) => (
-      <motion.div
-        key={i}
-        variants={{
-          initial: { width: 0, opacity: 0 },
-          animate: { width: `${width}%`, opacity: 1 },
-        }}
-        transition={{ duration: 0.5, delay: i * 0.1 }}
-        className="h-1.5 sm:h-2 bg-foreground/20 rounded-full"
-      />
-    ))}
-    <div className="flex gap-2 pt-1">
-      <div className="h-1.5 sm:h-2 w-4 bg-primary rounded-full" />
-      <div className="h-1.5 sm:h-2 w-12 bg-foreground/10 rounded-full" />
-    </div>
-  </motion.div>
-);
-
-// 2. UI / Styling — bouncing boxes
-const SkeletonTwo = () => (
-  <motion.div
-    whileHover="hover"
-    className="flex flex-1 w-full h-full min-h-25 bg-secondary/50 rounded-lg p-3 sm:p-4 items-center justify-center gap-2 sm:gap-3"
-  >
-    {[1, 2, 3].map((i) => (
-      <motion.div
-        key={i}
-        variants={{
-          hover: { scale: [1, 1.1, 1], y: [0, -5, 0] },
-        }}
-        transition={{ duration: 0.4, delay: i * 0.05 }}
-        className="h-8 w-8 sm:h-11 sm:w-11 md:h-12 md:w-12 rounded-xl border-2 border-primary bg-background shadow-[4px_4px_0px_0px_var(--primary)]"
-      />
-    ))}
-  </motion.div>
-);
-
-// 3. Backend — rising data packet
-const SkeletonThree = () => (
-  <div className="flex flex-1 w-full h-full min-h-25 bg-secondary/50 rounded-lg p-3 sm:p-4 flex-col justify-between overflow-hidden relative">
-    <div className="flex justify-between w-full border-b border-border pb-2">
-      <div className="h-1.5 sm:h-2 w-8 bg-primary rounded-full animate-pulse" />
-      <div className="h-1.5 sm:h-2 w-2 bg-muted-foreground rounded-full" />
-    </div>
-    <motion.div
-      animate={{ y: [0, -40], opacity: [0, 1, 0] }}
-      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-      className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1 h-8 bg-linear-to-t from-primary to-transparent"
-    />
-    <div className="h-6 sm:h-8 w-full bg-background border border-border rounded-md" />
-  </div>
-);
-
-// 4. Tools — expanding version nodes
-const SkeletonFour = () => (
-  <motion.div
-    className="flex flex-1 w-full h-full min-h-25 bg-secondary/50 rounded-lg p-3 sm:p-4 flex-col justify-center space-y-2 sm:space-y-3"
-    initial="initial"
-    whileHover="hover"
-  >
-    {[1, 2, 3].map((i) => (
-      <div key={i} className="flex items-center gap-2 sm:gap-3">
-        <motion.div
-          variants={{
-            initial: { scale: 1 },
-            hover: { scale: 1.2, backgroundColor: "var(--primary)" },
-          }}
-          className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0 rounded-full border-2 border-primary"
-        />
-        <motion.div
-          variants={{
-            initial: { width: "20%" },
-            hover: { width: "100%" },
-          }}
-          className="h-1.5 sm:h-2 bg-primary/20 rounded-full"
-        />
-      </div>
-    ))}
-  </motion.div>
-);
-
-// 5. Growth — animated bar chart
-const SkeletonFive = () => (
-  <div className="flex flex-1 w-full h-full min-h-25 bg-secondary/50 rounded-lg p-3 sm:p-4 items-end justify-around">
-    {[60, 100, 80].map((height, i) => (
-      <motion.div
-        key={i}
-        initial={{ height: 0 }}
-        whileInView={{ height: `${height}%` }}
-        className="w-3 sm:w-4 bg-primary rounded-t-sm"
-        transition={{ duration: 1, delay: i * 0.2 }}
-      />
-    ))}
-  </div>
-);
-
-/* ── Skill items config ── */
-const skillItems = [
+const groups: { label: string; tech: Tech[] }[] = [
   {
-    title: "Frontend",
-    description: <span>React, Next.js, TypeScript, JavaScript</span>,
-    header: <SkeletonOne />,
-    className: "md:col-span-1",
-    icon: <IconBrandJavascript className="h-4 w-4 text-primary" />,
+    label: "Frontend",
+    tech: [
+      { name: "React", Icon: SiReact, color: "#61DAFB" },
+      { name: "Next.js", Icon: SiNextdotjs, color: "var(--foreground)" },
+      { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+      { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+    ],
   },
   {
-    title: "UI / Styling",
-    description: <span>Tailwind CSS, Framer Motion, Figma</span>,
-    header: <SkeletonTwo />,
-    className: "md:col-span-1",
-    icon: <IconBrandTailwind className="h-4 w-4 text-primary" />,
+    label: "UI / Styling",
+    tech: [
+      { name: "Tailwind", Icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "Framer Motion", Icon: SiFramer, color: "#0055FF" },
+      { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
+    ],
   },
   {
-    title: "Backend",
-    description: <span>Node.js, Express, PostgreSQL, Docker</span>,
-    header: <SkeletonThree />,
-    className: "md:col-span-1",
-    icon: <IconBrandNodejs className="h-4 w-4 text-primary" />,
+    label: "Mobile",
+    tech: [{ name: "Flutter", Icon: SiFlutter, color: "#02569B" }],
   },
   {
-    title: "Tools",
-    description: <span>Git, GitHub, VSCode, Postman</span>,
-    header: <SkeletonFour />,
-    className: "md:col-span-2",
-    icon: <IconBrandGithub className="h-4 w-4 text-primary" />,
+    label: "Backend",
+    tech: [
+      { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
+      { name: "Express", Icon: SiExpress, color: "var(--foreground)" },
+      { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
+      { name: "Docker", Icon: SiDocker, color: "#2496ED" },
+    ],
   },
   {
-    title: "Growth",
-    description: <span>Accessibility, Performance, Testing</span>,
-    header: <SkeletonFive />,
-    className: "md:col-span-1",
-    icon: <IconBrandFigma className="h-4 w-4 text-primary" />,
+    label: "Tools",
+    tech: [
+      { name: "Git", Icon: SiGit, color: "#F05032" },
+      { name: "GitHub", Icon: SiGithub, color: "var(--foreground)" },
+      { name: "Postman", Icon: SiPostman, color: "#FF6C37" },
+      { name: "Vite", Icon: SiVite, color: "#646CFF" },
+    ],
+  },
+  {
+    label: "Growth",
+    tech: [
+      { name: "Lighthouse", Icon: SiLighthouse, color: "#F44B21" },
+      { name: "Jest", Icon: SiJest, color: "#C21325" },
+    ],
   },
 ];
 
-/* ── Skills section ── */
+/**
+ * Bare icon — no card, no border. Springs in on scroll, then on hover it
+ * pops up, tilts, and takes on the brand color.
+ *
+ * Color is handled in CSS (a `--brand` custom property plus a hover rule) so
+ * it can resolve theme tokens; Framer only drives the transform.
+ */
+const TechIcon = ({ name, Icon, color }: Tech) => (
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, scale: 0.4, y: 20 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: { type: "spring", stiffness: 380, damping: 18 },
+      },
+    }}
+    style={{ "--brand": color } as React.CSSProperties}
+    className="group/icon flex cursor-pointer flex-col items-center gap-2.5"
+  >
+    <motion.span
+      whileHover={{ scale: 1.3, rotate: -8, y: -12 }}
+      transition={{ type: "spring", stiffness: 400, damping: 12, mass: 0.6 }}
+      className="text-foreground/70 transition-colors duration-300 group-hover/icon:text-[var(--brand)]"
+    >
+      <Icon
+        className="h-11 w-11 sm:h-14 sm:w-14 md:h-16 md:w-16"
+        aria-label={name}
+      />
+    </motion.span>
+
+    <span className="text-[10px] font-black uppercase tracking-[0.14em] text-transparent transition-colors duration-300 group-hover/icon:text-[var(--brand)] sm:text-[11px]">
+      {name}
+    </span>
+  </motion.div>
+);
+
 export default function Skills() {
   return (
-    <div className="mt-8 sm:mt-12 px-4 md:px-0">
-      {/* Heading uses same fluid clamp pattern as the rest of the site */}
+    <div className="mt-10 sm:mt-14 px-4 md:px-0">
       <h3
-        className="font-black mb-6 sm:mb-8 text-foreground text-center uppercase tracking-tighter leading-none"
+        className="font-black mb-10 sm:mb-14 text-foreground text-center uppercase tracking-tighter leading-none"
         style={{ fontSize: "clamp(1.4rem, 4vw, 2rem)" }}
       >
         Skills &amp; Tools
       </h3>
 
-      <BentoGrid>
-        {skillItems.map((item, i) => (
-          <BentoGridItem
-            key={i}
-            title={item.title}
-            description={item.description}
-            header={item.header}
-            className={cn(
-              "border-border bg-background transition-all duration-300",
-              item.className,
-            )}
-            icon={item.icon}
-          />
+      <div className="flex flex-col gap-12 sm:gap-16">
+        {groups.map((group) => (
+          <div key={group.label}>
+            <div className="mb-6 flex items-center gap-4 sm:mb-8">
+              <span className="text-[11px] font-black uppercase tracking-[0.16em] text-foreground/50 sm:text-xs">
+                {group.label}
+              </span>
+              <span className="h-px flex-1 bg-border" aria-hidden />
+            </div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.09 } },
+              }}
+              className="flex flex-wrap items-start justify-center gap-x-10 gap-y-8 sm:gap-x-16 sm:gap-y-10"
+            >
+              {group.tech.map((t) => (
+                <TechIcon key={t.name} {...t} />
+              ))}
+            </motion.div>
+          </div>
         ))}
-      </BentoGrid>
+      </div>
     </div>
   );
 }

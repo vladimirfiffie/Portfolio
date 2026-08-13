@@ -60,7 +60,7 @@ export const BentoGridItem = ({
           {title}
         </div>
         <div className="font-sans font-medium text-muted-foreground leading-relaxed"
-          style={{ fontSize: "clamp(0.7rem, 1.4vw, 0.875rem)" }}
+          style={{ fontSize: "clamp(0.78rem, 1.4vw, 0.9rem)" }}
         >
           {description}
         </div>
