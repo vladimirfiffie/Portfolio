@@ -1,46 +1,37 @@
-# Vladimir Fiffie Jr. – Portfolio
+# Portfolio Website — React / Next.js / Tailwind CSS
 
-Welcome to my frontend portfolio! This project showcases my **UI/UX skills, component design, and modern web development expertise** using React, Next.js, TypeScript, Tailwind CSS, and Framer Motion.
+A modern, high-performance personal portfolio built with Next.js, React, and Framer Motion—designed to showcase production-grade UI/UX design, interactive motion components, and frontend development projects.
 
-It demonstrates **reusable components, responsive layouts, and interactive design patterns** that I would use in production-grade web applications.
-
-> **Live Website:** [https://vlad-dev.vercel.app/]
+> 🌐 **Live Demo:** [vlad-dev.vercel.app](https://vlad-dev.vercel.app/)
 
 ---
 
-## Features
+## At a Glance
 
-- **Component-Driven Design** – All sections are built as reusable, modular React components.
-- **Interactive Animations** – Smooth transitions and motion effects powered by Framer Motion.
-- **Tailwind CSS** – Fully responsive, utility-first styling.
-- **Link Previews** – Integration of external resources with rich hover states.
-- **Accessibility & UX** – Clear typography, high contrast, and intuitive navigation.
-- **Portfolio Footer & Core Stack** – Highlights skills and technologies in a visually appealing, interactive format.
-- **Responsive & Mobile-First** – Optimized for devices of all sizes.
+* **Fluid Motion & Micro-Interactions:** Smooth page transitions, hover states, and dynamic component animations driven by Framer Motion.
+* **Component-Driven Architecture:** Clean, modular React component layout emphasizing scalability and reusability.
+* **Modern Web Stack:** Built with Next.js App Router, TypeScript for strict safety, and Tailwind CSS for utility-first styling.
+* **Responsive & Accessible:** Native mobile-first layout with high-contrast UI tokens, polished typography, and fast loading speed.
 
 ---
 
-## Tech Stack
+## Showcase Highlights
 
-- **React** – Component-based architecture
-- **Next.js** – Server-side rendering and static site generation
-- **TypeScript** – Strongly typed, scalable code
-- **Tailwind CSS** – Responsive styling
-- **Framer Motion** – Animations and motion effects
-- **Vercel** – Deployment and hosting
+| Feature | Technical Implementation |
+| --- | --- |
+| **Hero Section** | Dynamic entry animations, live availability indicator, and call-to-action triggers. |
+| **Project Showcase** | Interactive project cards, link previews, and deep-dive technical summaries. |
+| **Interactive Footer** | Animated core tech stack marquee and direct contact links. |
+| **Performance & SEO** | Server-Side Rendering (SSR), optimized font delivery, and automated metadata tags. |
 
 ---
 
-## Projects & Components
+## Tech Stack & Tooling
 
-This portfolio includes a variety of interactive components and layouts, including:
-
-- Hero sections with motion effects
-- Interactive cards for projects and external links
-- Reusable buttons, input fields, and modals
-- Footers with availability indicators and stack previews
-- Smooth scrolling and navigation transitions
-
-> All components are **designed for real-world usage**, demonstrating **modularity, scalability, and clean code principles**.
+* **Framework:** Next.js / React
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **Animation:** Framer Motion
+* **Hosting & Deployment:** Vercel
 
 ---
