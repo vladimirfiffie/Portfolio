@@ -22,11 +22,6 @@ import {
   SiFlutter,
 } from "react-icons/si";
 
-/**
- * `color` is the official brand color, revealed on hover.
- * Brands whose mark is pure black use the foreground token instead, so they
- * stay visible in dark mode rather than disappearing into the background.
- */
 type Tech = { name: string; Icon: IconType; color: string };
 
 const groups: { label: string; tech: Tech[] }[] = [
@@ -78,13 +73,6 @@ const groups: { label: string; tech: Tech[] }[] = [
   },
 ];
 
-/**
- * Bare icon — no card, no border. Springs in on scroll, then on hover it
- * pops up, tilts, and takes on the brand color.
- *
- * Color is handled in CSS (a `--brand` custom property plus a hover rule) so
- * it can resolve theme tokens; Framer only drives the transform.
- */
 const TechIcon = ({ name, Icon, color }: Tech) => (
   <motion.div
     variants={{
@@ -102,7 +90,7 @@ const TechIcon = ({ name, Icon, color }: Tech) => (
     <motion.span
       whileHover={{ scale: 1.3, rotate: -8, y: -12 }}
       transition={{ type: "spring", stiffness: 400, damping: 12, mass: 0.6 }}
-      className="text-foreground/70 transition-colors duration-300 group-hover/icon:text-[var(--brand)]"
+      className="text-foreground/70 transition-colors duration-300 group-hover/icon:text-(--brand)"
     >
       <Icon
         className="h-11 w-11 sm:h-14 sm:w-14 md:h-16 md:w-16"
@@ -110,7 +98,7 @@ const TechIcon = ({ name, Icon, color }: Tech) => (
       />
     </motion.span>
 
-    <span className="text-[10px] font-black uppercase tracking-[0.14em] text-transparent transition-colors duration-300 group-hover/icon:text-[var(--brand)] sm:text-[11px]">
+    <span className="text-[10px] font-black uppercase tracking-[0.14em] text-transparent transition-colors duration-300 group-hover/icon:text-(--brand) sm:text-[11px]">
       {name}
     </span>
   </motion.div>
