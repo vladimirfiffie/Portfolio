@@ -12,8 +12,7 @@ export default function About() {
         <div className="max-w-4xl w-full text-center">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl lg:text-8xl font-black mb-12 text-foreground uppercase tracking-tighter leading-none"
           >
             A Bit About Me<span className="text-primary">.</span>
@@ -21,8 +20,7 @@ export default function About() {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="space-y-6 text-foreground mb-16 leading-tight uppercase font-bold tracking-tight"
             style={{ fontSize: "clamp(0.85rem, 2.2vw, 1.25rem)" }}

@@ -34,16 +34,13 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-
 }
 
 body {
-
     min-height: 100%;
-}
-
-body {
-    overflow-x: clip;
+    overflow-x: hidden; /* Bulletproof across Firefox, Chrome, and Safari */
+    background-color: var(--background);
+    color: var(--foreground);
 }
 
 :root {
@@ -93,10 +90,5 @@ body {
 @layer base {
     * {
         border-color: var(--border);
-    }
-
-    body {
-        background-color: var(--background);
-        color: var(--foreground);
     }
 }
