@@ -90,7 +90,7 @@ const TechIcon = ({ name, Icon, color }: Tech) => (
     <motion.span
       whileHover={{ scale: 1.3, rotate: -8, y: -12 }}
       transition={{ type: "spring", stiffness: 400, damping: 12, mass: 0.6 }}
-      className="text-foreground/70 transition-colors duration-300 group-hover/icon:text-[var(--brand)]"
+      className="text-foreground/70 transition-colors duration-300 group-hover/icon:text-(--brand)"
     >
       <Icon
         className="h-11 w-11 sm:h-14 sm:w-14 md:h-16 md:w-16"
@@ -98,7 +98,7 @@ const TechIcon = ({ name, Icon, color }: Tech) => (
       />
     </motion.span>
 
-    <span className="text-[10px] font-black uppercase tracking-[0.14em] text-foreground/80 transition-colors duration-300 group-hover/icon:text-[var(--brand)] sm:text-[11px]">
+    <span className="text-[10px] font-black uppercase tracking-[0.14em] text-foreground/80 transition-colors duration-300 group-hover/icon:text-(--brand) sm:text-[11px]">
       {name}
     </span>
   </motion.div>
