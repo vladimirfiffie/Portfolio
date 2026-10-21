@@ -17,6 +17,7 @@
     --color-card: var(--card);
     --color-card-foreground: var(--card-foreground);
     --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
     --color-primary: var(--primary);
     --color-primary-foreground: var(--primary-foreground);
     --color-secondary: var(--secondary);
@@ -29,18 +30,6 @@
     --color-border: var(--border);
     --color-input: var(--input);
     --color-ring: var(--ring);
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-}
-
-body {
-    min-height: 100%;
-    overflow-x: hidden; /* Bulletproof across Firefox, Chrome, and Safari */
-    background-color: var(--background);
-    color: var(--foreground);
 }
 
 :root {
@@ -85,6 +74,40 @@ body {
     --border: oklch(1 0 0 / 15%);
     --input: oklch(1 0 0 / 20%);
     --ring: oklch(1 0 0);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+@media (max-width: 640px) {
+    html {
+        scroll-padding-top: 88px;
+    }
 }
 
 @layer base {
