@@ -28,9 +28,7 @@ A modern, high-performance personal portfolio built with Next.js, React, and Fra
 
 ## Site made with
 
-- Next.js
-- React
-- Framer Motion
+React | Next.js | TypeScript | Tailwind CSS | Framer Motion
 
 ---
 

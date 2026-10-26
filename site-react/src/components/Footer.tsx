@@ -15,14 +15,8 @@ const Footer = () => {
 
   return (
     <footer className="relative w-full bg-background pt-14 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 overflow-hidden">
-
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-
-        {/* ── Main row ── */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-8 md:gap-10">
-
-          {/* Left — Identity */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,47 +58,52 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Center — Core stack (visible lg+, hidden below) */}
           <div className="hidden lg:flex items-center justify-center">
             <div className="flex flex-col items-center gap-2.5">
               <p className="text-[9px] font-black uppercase tracking-[0.22em] text-foreground/55">
                 Site made with
               </p>
-              <div className="flex items-center gap-6 xl:gap-8 whitespace-nowrap">
-                {coreStack.map((tech) => (
-                  <LinkPreview
-                    key={tech.name}
-                    url={tech.url}
-                    className="inline-block text-foreground text-[11px] font-black uppercase tracking-[0.12em] transition-colors border-b border-primary/0 hover:border-primary hover:text-primary"
-                  >
-                    {tech.name}
-                  </LinkPreview>
+              <div className="flex items-center gap-3 xl:gap-4 whitespace-nowrap">
+                {coreStack.map((tech, index) => (
+                  <div key={tech.name} className="flex items-center gap-3 xl:gap-4">
+                    <LinkPreview
+                      url={tech.url}
+                      className="inline-block text-foreground text-[11px] font-black uppercase tracking-[0.12em] transition-colors border-b border-primary/0 hover:border-primary hover:text-primary"
+                    >
+                      {tech.name}
+                    </LinkPreview>
+                    {index < coreStack.length - 1 && (
+                      <span className="text-foreground/40 text-[10px] font-black">|</span>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Mobile stack — wrapping pill list, shown below lg */}
           <div className="flex lg:hidden flex-col items-center justify-center gap-2">
             <p className="text-[9px] font-black uppercase tracking-[0.22em] text-foreground/55">
               Site made with
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-              {coreStack.map((tech) => (
-                <a
-                  key={tech.name}
-                  href={tech.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/60 hover:text-primary transition-colors"
-                >
-                  {tech.name}
-                </a>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+              {coreStack.map((tech, index) => (
+                <div key={tech.name} className="flex items-center gap-3">
+                  <a
+                    href={tech.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/60 hover:text-primary transition-colors"
+                  >
+                    {tech.name}
+                  </a>
+                  {index < coreStack.length - 1 && (
+                    <span className="text-foreground/40 text-[10px] font-black">|</span>
+                  )}
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Right — Availability badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,7 +122,6 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* ── Bottom bar ── */}
         <div className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <p className="text-foreground text-[11px] uppercase tracking-[0.14em] font-black text-center sm:text-left">
             © {currentYear} Vladimir Fiffie Jr<span className="text-primary">.</span>
@@ -132,7 +130,6 @@ const Footer = () => {
             Designed for the web 2026
           </p>
         </div>
-
       </div>
     </footer>
   );
