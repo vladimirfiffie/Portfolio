@@ -1,6 +1,6 @@
 # Portfolio Website — React / Next.js / Tailwind CSS
 
-A modern, high-performance personal portfolio built with Next.js, React, and Framer Motion—designed to showcase production-grade UI/UX design, interactive motion components, and frontend development projects.
+A modern, high-performance personal portfolio built with Next.js, React, and Framer Motion—designed to showcase production-grade UI/UX design, interactive motion components, and frontend development craftsmanship.
 
 > 🌐 **Live Demo:** [vlad-dev.vercel.app](https://vlad-dev.vercel.app/)
 
@@ -23,6 +23,14 @@ A modern, high-performance personal portfolio built with Next.js, React, and Fra
 | **Project Showcase** | Interactive project cards, link previews, and deep-dive technical summaries. |
 | **Interactive Footer** | Animated core tech stack marquee and direct contact links. |
 | **Performance & SEO** | Server-Side Rendering (SSR), optimized font delivery, and automated metadata tags. |
+
+---
+
+## Site made with
+
+- Next.js
+- React
+- Framer Motion
 
 ---
 
